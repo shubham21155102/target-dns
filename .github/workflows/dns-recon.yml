@@ -1,0 +1,60 @@
+name: DNS Reconnaissance Report
+
+on:
+  workflow_dispatch:
+    inputs:
+      domain:
+        description: 'Target domain name (e.g., example.com)'
+        required: true
+        type: string
+      report_format:
+        description: 'Report format'
+        required: false
+        default: 'markdown'
+        type: choice
+        options:
+          - markdown
+          - text
+          - json
+
+permissions:
+  contents: write
+
+jobs:
+  dns-recon:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Run DNS Reconnaissance
+        run: |
+          python dns_recon.py ${{ github.event.inputs.domain }}
+        env:
+          REPORT_FORMAT: ${{ github.event.inputs.report_format }}
+      
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dns-report-${{ github.event.inputs.domain }}
+          path: reports/
+          retention-days: 30
+      
+      - name: Commit and push report
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add reports/
+          git commit -m "Add DNS reconnaissance report for ${{ github.event.inputs.domain }}" || echo "No changes to commit"
+          git push || echo "No changes to push"

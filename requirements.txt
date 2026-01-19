@@ -1,0 +1,5 @@
+dnspython==2.6.1
+python-whois==0.9.4
+requests==2.31.0
+colorama==0.4.6
+pyyaml==6.0.1
