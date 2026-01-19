@@ -1,0 +1,31 @@
+# DNS Reconnaissance Configuration
+# Add the target domain name here
+target_domain: example.com
+
+# Report settings
+report_format: markdown  # options: markdown, text, json
+output_directory: reports
+
+# DNS settings
+dns_records:
+  - A
+  - AAAA
+  - MX
+  - TXT
+  - NS
+  - CNAME
+  - SOA
+
+# Subdomain enumeration (basic wordlist)
+enable_subdomain_enum: true
+subdomain_wordlist:
+  - www
+  - mail
+  - ftp
+  - api
+  - dev
+  - test
+  - staging
+  - admin
+  - portal
+  - blog
