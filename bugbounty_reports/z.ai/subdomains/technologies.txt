@@ -1,0 +1,4 @@
+[*] Scanning api.z.ai
+api.z.ai | Server: nginx | Powered-By: None | Technologies: None detected
+[*] Scanning chat.z.ai
+chat.z.ai | Server: Unknown | Powered-By: None | Technologies:  jQuery

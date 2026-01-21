@@ -1,0 +1,22 @@
+Security Header Analysis Report
+Generated: Wed Jan 21 11:34:18 UTC 2026
+=====================================
+
+### api.z.ai ###
+[✗] HSTS: Missing
+[✗] X-Frame-Options: Missing
+[✗] X-Content-Type-Options: Missing
+[✗] CSP: Missing
+[✗] X-XSS-Protection: Missing
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### chat.z.ai ###
+[✗] HSTS: Missing
+[✓] X-Frame-Options: Present
+[✗] X-Content-Type-Options: Missing
+[✗] CSP: Missing
+[✗] X-XSS-Protection: Missing
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+

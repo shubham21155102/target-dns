@@ -1,0 +1,4 @@
+api.z.ai
+chat.z.ai
+docs.z.ai
+mail.z.ai

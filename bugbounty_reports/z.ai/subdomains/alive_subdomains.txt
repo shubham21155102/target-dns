@@ -1,0 +1,2 @@
+api.z.ai
+chat.z.ai

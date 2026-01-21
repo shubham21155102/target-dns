@@ -1,0 +1,2 @@
+mail.z.ai
+api.z.ai
