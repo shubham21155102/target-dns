@@ -1,0 +1,22 @@
+Security Header Analysis Report
+Generated: Wed Jan 21 11:48:38 UTC 2026
+=====================================
+
+### ftp.hellokazi.in ###
+[✗] HSTS: Missing
+[✗] X-Frame-Options: Missing
+[✗] X-Content-Type-Options: Missing
+[✗] CSP: Missing
+[✗] X-XSS-Protection: Missing
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### www.hellokazi.in ###
+[✗] HSTS: Missing
+[✗] X-Frame-Options: Missing
+[✗] X-Content-Type-Options: Missing
+[✓] CSP: Present
+[✗] X-XSS-Protection: Missing
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+

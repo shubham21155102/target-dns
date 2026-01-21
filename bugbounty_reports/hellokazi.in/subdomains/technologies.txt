@@ -1,0 +1,4 @@
+[*] Scanning ftp.hellokazi.in
+ftp.hellokazi.in | Server: LiteSpeed | Powered-By: None | Technologies: None detected
+[*] Scanning www.hellokazi.in
+www.hellokazi.in | Server: hcdn | Powered-By: PHP/8.3.19 | Technologies: None detected

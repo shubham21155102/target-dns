@@ -1,0 +1,2 @@
+ftp.hellokazi.in,145.223.17.144,HTTP:403,HTTPS:000000
+www.hellokazi.in,148.135.128.8,HTTP:301,HTTPS:200
