@@ -38,6 +38,11 @@ venv.bak/
 # Reports (optional - comment out if you want to commit reports)
 # reports/
 
+# Bug Bounty Reports (optional - comment out if you want to commit bug bounty reports)
+# Note: Bug bounty reports are automatically committed by the workflow
+# Uncomment below to prevent committing bug bounty reports
+# bugbounty_reports/
+
 # Temporary files
 *.tmp
 *.log

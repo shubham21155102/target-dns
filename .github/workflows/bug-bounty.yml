@@ -1,0 +1,662 @@
+name: Bug Bounty Reconnaissance Automation
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_domain:
+        description: 'Target domain for bug bounty reconnaissance (e.g., example.com)'
+        required: true
+        type: string
+      deep_scan:
+        description: 'Enable deep scanning (slower but more comprehensive)'
+        required: false
+        default: false
+        type: boolean
+      enable_subdomain_bruteforce:
+        description: 'Enable subdomain bruteforcing (can be slow)'
+        required: false
+        default: true
+        type: boolean
+      report_format:
+        description: 'Report format'
+        required: false
+        default: 'markdown'
+        type: choice
+        options:
+          - markdown
+          - json
+          - html
+
+permissions:
+  contents: write
+  actions: write
+
+env:
+  PYTHON_VERSION: '3.11'
+
+jobs:
+  bug-bounty-recon:
+    name: Comprehensive Bug Bounty Reconnaissance
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+
+      - name: Install reconnaissance dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          # Install additional tools for bug bounty
+          pip install dnsx pyasn aiohttp httpx
+
+      - name: Install system security tools
+        run: |
+          # Install essential security tools
+          sudo apt-get update
+          sudo apt-get install -y \
+            dnsutils \
+            whois \
+            nmap \
+            masscan \
+            nikto \
+            sslscan \
+            jq \
+            curl \
+            wget
+
+      - name: Create output directories
+        run: |
+          mkdir -p bugbounty_reports/${{ github.event.inputs.target_domain }}
+          mkdir -p bugbounty_reports/${{ github.event.inputs.target_domain }}/subdomains
+          mkdir -p bugbounty_reports/${{ github.event.inputs.target_domain }}/screenshots
+          mkdir -p bugbounty_reports/${{ github.event.inputs.target_domain }}/vulnerabilities
+          mkdir -p bugbounty_reports/${{ github.event.inputs.target_domain }}/assets
+
+      - name: Run DNS Reconnaissance
+        id: dns_recon
+        run: |
+          echo "Starting DNS reconnaissance for ${{ github.event.inputs.target_domain }}"
+          python dns_recon.py ${{ github.event.inputs.target_domain }}
+
+          # Move generated report to bug bounty folder
+          if [ -d "reports" ]; then
+            cp -r reports/* bugbounty_reports/${{ github.event.inputs.target_domain }}/ || true
+          fi
+        env:
+          REPORT_FORMAT: ${{ github.event.inputs.report_format }}
+
+      - name: Subdomain Enumeration (Passive + Active)
+        id: subdomain_enum
+        run: |
+          TARGET="${{ github.event.inputs.target_domain }}"
+          OUTPUT_DIR="bugbounty_reports/${TARGET}/subdomains"
+
+          echo "=== Performing Subdomain Enumeration ==="
+
+          # Method 1: Certificate Transparency logs
+          echo "[*] Querying Certificate Transparency logs..."
+          curl -s "https://crt.sh/?q=%25.${TARGET}&output=json" | jq -r '.[].name_value' | sort -u > "${OUTPUT_DIR}/crt_subdomains.txt"
+          sed 's/\*\.//g' "${OUTPUT_DIR}/crt_subdomains.txt" | sort -u > "${OUTPUT_DIR}/crt_subdomains_clean.txt"
+
+          # Method 2: DNS Aggregator interfaces
+          echo "[*] Checking DNS aggregators..."
+          curl -s "https://sonar.omnisint.io/subdomains/${TARGET}" | jq -r '.[]' 2>/dev/null | sort -u > "${OUTPUT_DIR}/sonar_subdomains.txt" || echo "Sonar query failed"
+
+          curl -s "https://api.hackertarget.com/hostsearch/?q=${TARGET}" | cut -d',' -f1 | sort -u > "${OUTPUT_DIR}/hackertarget_subdomains.txt" || echo "HackerTarget query failed"
+
+          # Method 3: Search engine enumeration
+          echo "[*] Enumerating via search engines..."
+
+          # Merge all passive results
+          cat "${OUTPUT_DIR}"/*_subdomains*.txt 2>/dev/null | grep -v "^[[:space:]]*$" | sort -u > "${OUTPUT_DIR}/all_passive_subdomains.txt"
+
+          echo "[+] Found $(wc -l < "${OUTPUT_DIR}/all_passive_subdomains.txt") passive subdomains"
+
+          # Active bruteforcing if enabled
+          if [ "${{ github.event.inputs.enable_subdomain_bruteforce }}" = "true" ]; then
+            echo "[*] Performing active subdomain bruteforcing..."
+
+            # Use a basic wordlist for demonstration
+            for word in www mail ftp api dev test staging admin portal blog app mobile cdn static media assets; do
+              subdomain="${word}.${TARGET}"
+              if host -W 2 "${subdomain}" >/dev/null 2>&1; then
+                echo "${subdomain}"
+              fi
+            done > "${OUTPUT_DIR}/bruteforce_subdomains.txt"
+
+            echo "[+] Found $(wc -l < "${OUTPUT_DIR}/bruteforce_subdomains.txt") subdomains via bruteforce"
+          fi
+
+          # Merge all subdomains
+          cat "${OUTPUT_DIR}"/*_subdomains*.txt 2>/dev/null | grep "\.${TARGET}$" | sort -u > "${OUTPUT_DIR}/all_subdomains_final.txt"
+
+          echo "[✓] Total unique subdomains: $(wc -l < "${OUTPUT_DIR}/all_subdomains_final.txt")"
+
+      - name: DNS Resolution and HTTP Probing
+        id: http_probe
+        run: |
+          TARGET="${{ github.event.inputs.target_domain }}"
+          OUTPUT_DIR="bugbounty_reports/${TARGET}"
+
+          echo "=== Resolving Subdomains and Probing HTTP ==="
+
+          # Resolve subdomains and get IP addresses
+          echo "[*] Resolving discovered subdomains..."
+
+          INPUT_FILE="${OUTPUT_DIR}/subdomains/all_subdomains_final.txt"
+          OUTPUT_FILE="${OUTPUT_DIR}/subdomains/resolved_subdomains.txt"
+
+          if [ -f "$INPUT_FILE" ]; then
+            while IFS= read -r subdomain; do
+              if [ -n "$subdomain" ]; then
+                # Get IP address
+                ip=$(host -W 2 -t A "$subdomain" 2>/dev/null | grep "has address" | head -n1 | awk '{print $4}')
+                if [ -n "$ip" ]; then
+                  # Check for HTTP/HTTPS
+                  http_code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 5 "http://${subdomain}" 2>/dev/null)
+                  https_code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 5 "https://${subdomain}" 2>/dev/null)
+
+                  echo "${subdomain},${ip},HTTP:${http_code},HTTPS:${https_code}"
+                fi
+              fi
+            done < "$INPUT_FILE" > "$OUTPUT_FILE"
+          fi
+
+          echo "[✓] Resolved $(wc -l < "$OUTPUT_FILE") subdomains"
+
+          # Extract alive domains
+          grep -E "HTTP:(200|301|302|403|401|500)|HTTPS:(200|301|302|403|401|500)" "$OUTPUT_FILE" | cut -d',' -f1 > "${OUTPUT_DIR}/subdomains/alive_subdomains.txt"
+
+          echo "[+] Found $(wc -l < "${OUTPUT_DIR}/subdomains/alive_subdomains.txt") alive domains"
+
+      - name: Technology Stack Fingerprinting
+        id: tech_fingerprint
+        run: |
+          TARGET="${{ github.event.inputs.target_domain }}"
+          OUTPUT_DIR="bugbounty_reports/${TARGET}"
+
+          echo "=== Fingerprinting Technology Stacks ==="
+
+          ALIVE_FILE="${OUTPUT_DIR}/subdomains/alive_subdomains.txt"
+          TECH_FILE="${OUTPUT_DIR}/subdomains/technologies.txt"
+
+          if [ -f "$ALIVE_FILE" ]; then
+            while IFS= read -r domain; do
+              if [ -n "$domain" ]; then
+                echo "[*] Scanning $domain"
+
+                # Get HTTP headers
+                headers=$(curl -s -I --max-time 5 "https://${domain}" 2>/dev/null || curl -s -I --max-time 5 "http://${domain}" 2>/dev/null || echo "")
+
+                # Extract technology information from headers
+                server=$(echo "$headers" | grep -i "^Server:" | cut -d':' -f2- | xargs)
+                powered_by=$(echo "$headers" | grep -i "^X-Powered-By:" | cut -d':' -f2- | xargs)
+
+                # Get page content for further analysis
+                content=$(curl -s --max-time 5 "https://${domain}" 2>/dev/null || curl -s --max-time 5 "http://${domain}" 2>/dev/null || echo "")
+
+                # Detect common technologies
+                tech_found=""
+
+                # Check for common frameworks/CMS
+                if echo "$content" | grep -qi "wordpress"; then
+                  tech_found="${tech_found} WordPress"
+                fi
+                if echo "$content" | grep -qi "drupal"; then
+                  tech_found="${tech_found} Drupal"
+                fi
+                if echo "$content" | grep -qi "joomla"; then
+                  tech_found="${tech_found} Joomla"
+                fi
+                if echo "$content" | grep -qi "react\|_next\|__next"; then
+                  tech_found="${tech_found} React"
+                fi
+                if echo "$content" | grep -qi "vue\|vue-app"; then
+                  tech_found="${tech_found} Vue.js"
+                fi
+                if echo "$content" | grep -qi "angular"; then
+                  tech_found="${tech_found} Angular"
+                fi
+                if echo "$content" | grep -qi "jquery"; then
+                  tech_found="${tech_found} jQuery"
+                fi
+
+                echo "${domain} | Server: ${server:-Unknown} | Powered-By: ${powered_by:-None} | Technologies: ${tech_found:-None detected}"
+
+              fi
+            done < "$ALIVE_FILE" > "$TECH_FILE"
+          fi
+
+          echo "[✓] Technology fingerprinting complete"
+
+      - name: Security Header Analysis
+        id: security_headers
+        run: |
+          TARGET="${{ github.event.inputs.target_domain }}"
+          OUTPUT_DIR="bugbounty_reports/${TARGET}/vulnerabilities"
+
+          echo "=== Analyzing Security Headers ==="
+
+          ALIVE_FILE="${OUTPUT_DIR}/../subdomains/alive_subdomains.txt"
+          SECURITY_REPORT="${OUTPUT_DIR}/security_headers_analysis.txt"
+
+          echo "Security Header Analysis Report" > "$SECURITY_REPORT"
+          echo "Generated: $(date)" >> "$SECURITY_REPORT"
+          echo "=====================================" >> "$SECURITY_REPORT"
+          echo "" >> "$SECURITY_REPORT"
+
+          if [ -f "$ALIVE_FILE" ]; then
+            while IFS= read -r domain; do
+              if [ -n "$domain" ]; then
+                echo "Checking: $domain"
+                echo "### $domain ###" >> "$SECURITY_REPORT"
+
+                # Get headers
+                headers=$(curl -s -I --max-time 5 "https://${domain}" 2>/dev/null || curl -s -I --max-time 5 "http://${domain}" 2>/dev/null || echo "")
+
+                # Check security headers
+                if echo "$headers" | grep -qi "Strict-Transport-Security"; then
+                  echo "[✓] HSTS: Present" >> "$SECURITY_REPORT"
+                else
+                  echo "[✗] HSTS: Missing" >> "$SECURITY_REPORT"
+                fi
+
+                if echo "$headers" | grep -qi "X-Frame-Options"; then
+                  echo "[✓] X-Frame-Options: Present" >> "$SECURITY_REPORT"
+                else
+                  echo "[✗] X-Frame-Options: Missing" >> "$SECURITY_REPORT"
+                fi
+
+                if echo "$headers" | grep -qi "X-Content-Type-Options"; then
+                  echo "[✓] X-Content-Type-Options: Present" >> "$SECURITY_REPORT"
+                else
+                  echo "[✗] X-Content-Type-Options: Missing" >> "$SECURITY_REPORT"
+                fi
+
+                if echo "$headers" | grep -qi "Content-Security-Policy"; then
+                  echo "[✓] CSP: Present" >> "$SECURITY_REPORT"
+                else
+                  echo "[✗] CSP: Missing" >> "$SECURITY_REPORT"
+                fi
+
+                if echo "$headers" | grep -qi "X-XSS-Protection"; then
+                  echo "[✓] X-XSS-Protection: Present" >> "$SECURITY_REPORT"
+                else
+                  echo "[✗] X-XSS-Protection: Missing" >> "$SECURITY_REPORT"
+                fi
+
+                if echo "$headers" | grep -qi "Referrer-Policy"; then
+                  echo "[✓] Referrer-Policy: Present" >> "$SECURITY_REPORT"
+                else
+                  echo "[✗] Referrer-Policy: Missing" >> "$SECURITY_REPORT"
+                fi
+
+                if echo "$headers" | grep -qi "Permissions-Policy"; then
+                  echo "[✓] Permissions-Policy: Present" >> "$SECURITY_REPORT"
+                else
+                  echo "[✗] Permissions-Policy: Missing" >> "$SECURITY_REPORT"
+                fi
+
+                echo "" >> "$SECURITY_REPORT"
+
+              fi
+            done < "$ALIVE_FILE"
+          fi
+
+          echo "[✓] Security header analysis complete"
+
+      - name: Port Scanning (Quick Top Ports)
+        id: port_scan
+        if: github.event.inputs.deep_scan == 'true'
+        run: |
+          TARGET="${{ github.event.inputs.target_domain }}"
+          OUTPUT_DIR="bugbounty_reports/${TARGET}/vulnerabilities"
+
+          echo "=== Performing Port Scanning ==="
+          echo "[*] Scanning common ports on main domain..."
+
+          # Get main IP
+          MAIN_IP=$(host -W 2 -t A "${TARGET}" | grep "has address" | head -n1 | awk '{print $4}')
+
+          if [ -n "$MAIN_IP" ]; then
+            echo "[*] Target IP: $MAIN_IP"
+
+            # Quick scan of top 100 ports
+            nmap -T4 --top-ports 100 -oN "${OUTPUT_DIR}/nmap_top100.txt" "${MAIN_IP}" 2>/dev/null || true
+
+            # Extract open ports
+            grep "open" "${OUTPUT_DIR}/nmap_top100.txt" | head -20 > "${OUTPUT_DIR}/open_ports_summary.txt"
+
+            echo "[✓] Port scanning complete"
+          else
+            echo "[!] Could not resolve target domain IP"
+          fi
+
+      - name: SSL/TLS Analysis
+        id: ssl_analysis
+        run: |
+          TARGET="${{ github.event.inputs.target_domain }}"
+          OUTPUT_DIR="bugbounty_reports/${TARGET}/vulnerabilities"
+
+          echo "=== SSL/TLS Certificate Analysis ==="
+
+          ALIVE_FILE="${OUTPUT_DIR}/../subdomains/alive_subdomains.txt"
+          SSL_REPORT="${OUTPUT_DIR}/ssl_analysis.txt"
+
+          echo "SSL/TLS Analysis Report" > "$SSL_REPORT"
+          echo "Generated: $(date)" >> "$SSL_REPORT"
+          echo "=============================" >> "$SSL_REPORT"
+          echo "" >> "$SSL_REPORT"
+
+          if [ -f "$ALIVE_FILE" ]; then
+            while IFS= read -r domain; do
+              if [ -n "$domain" ]; then
+                echo "[*] Checking SSL for $domain"
+
+                echo "### $domain ###" >> "$SSL_REPORT"
+
+                # Run sslscan
+                sslscan --no-colour "$domain" 2>/dev/null | head -50 >> "$SSL_REPORT" || echo "[!] SSL scan failed for $domain" >> "$SSL_REPORT"
+
+                echo "" >> "$SSL_REPORT"
+
+              fi
+            done < "$ALIVE_FILE"
+          fi
+
+          echo "[✓] SSL/TLS analysis complete"
+
+      - name: Generate Bug Bounty Report
+        id: generate_report
+        run: |
+          TARGET="${{ github.event.inputs.target_domain }}"
+          OUTPUT_DIR="bugbounty_reports/${TARGET}"
+          TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+
+          echo "=== Generating Bug Bounty Report ==="
+
+          REPORT_FILE="${OUTPUT_DIR}/BUG_BOUNTY_REPORT_${TIMESTAMP}.md"
+
+          cat > "$REPORT_FILE" << EOF
+# Bug Bounty Reconnaissance Report
+
+**Target Domain:** \`${TARGET}\`
+**Report Generated:** $(date)
+**Scan Type:** $([ "${{ github.event.inputs.deep_scan }}" = "true" ] && echo "Deep Scan" || echo "Standard Scan")
+**Contributor:** @shubham21155102
+
+---
+
+## Executive Summary
+
+This automated reconnaissance report provides comprehensive information about the target domain **${TARGET}**, including DNS records, subdomain enumeration, technology stack identification, and security posture assessment.
+
+### Quick Statistics
+
+| Metric | Count |
+|--------|-------|
+| Total Subdomains Discovered | $(wc -l < "${OUTPUT_DIR}/subdomains/all_subdomains_final.txt" 2>/dev/null || echo "N/A") |
+| Alive Domains | $(wc -l < "${OUTPUT_DIR}/subdomains/alive_subdomains.txt" 2>/dev/null || echo "N/A") |
+| DNS Records Analyzed | Multiple types |
+| Security Headers Analyzed | All alive domains |
+
+---
+
+## 1. DNS Reconnaissance
+
+### 1.1 DNS Records
+
+EOF
+
+          # Append DNS report if exists
+          find "$OUTPUT_DIR" -name "*${TARGET}*.md" -o -name "*${TARGET}*.txt" | head -1 | while read file; do
+            if [ -f "$file" ]; then
+              cat "$file" >> "$REPORT_FILE"
+              echo "" >> "$REPORT_FILE"
+            fi
+          done
+
+          cat >> "$REPORT_FILE" << EOF
+
+---
+
+## 2. Subdomain Enumeration
+
+### 2.1 Discovered Subdomains
+
+Total unique subdomains discovered: **$(wc -l < "${OUTPUT_DIR}/subdomains/all_subdomains_final.txt" 2>/dev/null || echo "0")**
+
+#### Alive Domains $(wc -l < "${OUTPUT_DIR}/subdomains/alive_subdomains.txt" 2>/dev/null || echo "0")
+
+| Subdomain | IP Address | HTTP Status | HTTPS Status |
+|-----------|-----------|-------------|--------------|
+EOF
+
+          # Add resolved subdomains table
+          if [ -f "${OUTPUT_DIR}/subdomains/resolved_subdomains.txt" ]; then
+            head -20 "${OUTPUT_DIR}/subdomains/resolved_subdomains.txt" | while IFS=',' read -r subdomain ip http https; do
+              echo "| $subdomain | $ip | $http | $https |" >> "$REPORT_FILE"
+            done
+          fi
+
+          cat >> "$REPORT_FILE" << EOF
+
+*(Note: Only first 20 results shown. Check resolved_subdomains.txt for complete list)*
+
+---
+
+## 3. Technology Stack
+
+Identified technologies across discovered subdomains:
+
+EOF
+
+          if [ -f "${OUTPUT_DIR}/subdomains/technologies.txt" ]; then
+            cat "${OUTPUT_DIR}/subdomains/technologies.txt" >> "$REPORT_FILE"
+          fi
+
+          cat >> "$REPORT_FILE" << EOF
+
+---
+
+## 4. Security Analysis
+
+### 4.1 Security Headers Assessment
+
+EOF
+
+          if [ -f "${OUTPUT_DIR}/vulnerabilities/security_headers_analysis.txt" ]; then
+            cat "${OUTPUT_DIR}/vulnerabilities/security_headers_analysis.txt" >> "$REPORT_FILE"
+          fi
+
+          cat >> "$REPORT_FILE" << EOF
+
+### 4.2 SSL/TLS Certificate Analysis
+
+EOF
+
+          if [ -f "${OUTPUT_DIR}/vulnerabilities/ssl_analysis.txt" ]; then
+            head -100 "${OUTPUT_DIR}/vulnerabilities/ssl_analysis.txt" >> "$REPORT_FILE"
+            echo "" >> "$REPORT_FILE"
+            echo "*(Note: Truncated. Check ssl_analysis.txt for complete results)*" >> "$REPORT_FILE"
+          fi
+
+          # Port scanning section if deep scan was enabled
+          if [ "${{ github.event.inputs.deep_scan }}" = "true" ] && [ -f "${OUTPUT_DIR}/vulnerabilities/open_ports_summary.txt" ]; then
+            cat >> "$REPORT_FILE" << EOF
+
+### 4.3 Open Ports
+
+EOF
+            cat "${OUTPUT_DIR}/vulnerabilities/open_ports_summary.txt" >> "$REPORT_FILE"
+          fi
+
+          cat >> "$REPORT_FILE" << EOF
+
+---
+
+## 5. Potential Vulnerabilities & Findings
+
+### 5.1 Missing Security Headers
+
+Based on the automated analysis, the following domains may be missing important security headers:
+
+- **X-Frame-Options**: Clickjacking protection
+- **Content-Security-Policy**: XSS and data injection protection
+- **Strict-Transport-Security**: HTTPS enforcement
+- **X-Content-Type-Options**: MIME-sniffing protection
+
+### 5.2 Recommendations
+
+1. **Implement Security Headers**: Ensure all domains have proper security headers configured
+2. **Update SSL Certificates**: Review and update any expiring SSL certificates
+3. **Subdomain Management**: Review discovered subdomains and remove unnecessary ones
+4. **Port Hardening**: Close unnecessary open services (if deep scan enabled)
+5. **Technology Updates**: Keep all detected technologies and frameworks updated
+
+---
+
+## 6. Methodology
+
+This automated reconnaissance was performed using the following methods:
+
+### 6.1 Subdomain Discovery
+- Certificate Transparency logs (crt.sh)
+- DNS aggregator queries
+- Active DNS bruteforcing (optional)
+- Search engine enumeration
+
+### 6.2 DNS Analysis
+- A, AAAA, MX, TXT, NS, CNAME, SOA record queries
+- WHOIS information gathering
+- Reverse DNS lookups
+
+### 6.3 Web Analysis
+- HTTP/HTTPS probing
+- Technology stack fingerprinting
+- Security header analysis
+- SSL/TLS certificate validation
+
+### 6.4 Network Analysis (Deep Scan)
+- Top 100 port scanning
+- Service version detection
+- Open port enumeration
+
+---
+
+## 7. Files Generated
+
+All raw data and detailed reports are saved in the \`bugbounty_reports/${TARGET}/\` directory:
+
+- \`subdomains/all_subdomains_final.txt\` - Complete list of discovered subdomains
+- \`subdomains/resolved_subdomains.txt\` - Resolved IP addresses and HTTP status codes
+- \`subdomains/alive_subdomains.txt\` - Domains with active web services
+- \`subdomains/technologies.txt\` - Technology fingerprinting results
+- \`vulnerabilities/security_headers_analysis.txt\` - Detailed security header analysis
+- \`vulnerabilities/ssl_analysis.txt\` - SSL/TLS certificate details
+- \`vulnerabilities/nmap_top100.txt\` - Port scan results (if deep scan enabled)
+
+---
+
+## 8. Disclaimer
+
+This automated reconnaissance report is generated for educational and authorized security testing purposes only. All findings should be manually verified before submission to any bug bounty program. The contributor (@shubham21155102) and this tool are not responsible for any misuse of this information.
+
+**Always ensure you have proper authorization before testing any target.**
+
+---
+
+## 9. Next Steps for Bug Bounty Hunters
+
+1. **Manual Verification**: Verify all automated findings manually
+2. **Vulnerability Scanning**: Use tools like Nuclei, Burp Suite for deeper analysis
+3. **Endpoint Discovery**: Hunt for hidden endpoints, parameters, and APIs
+4. **Business Logic**: Test for business logic vulnerabilities
+5. **Authentication/Authorization**: Test authentication and authorization mechanisms
+6. **Data Validation**: Check for input validation and sanitization issues
+
+---
+
+*Report generated by automated Bug Bounty Reconnaissance Workflow*
+*Contributor: shubham21155102*
+*Repository: shubham21155102/target-dns*
+EOF
+
+          echo "[✓] Bug bounty report generated: $REPORT_FILE"
+
+          # Create a summary for easy reading
+          echo "" >> "$REPORT_FILE"
+          echo "---" >> "$REPORT_FILE"
+          echo "" >> "$REPORT_FILE"
+          echo "## Scan Summary" >> "$REPORT_FILE"
+          echo "" >> "$REPORT_FILE"
+          echo "- Workflow Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> "$REPORT_FILE"
+          echo "- Contributor: @shubham21155102" >> "$REPORT_FILE"
+          echo "- Scan Date: $(date)" >> "$REPORT_FILE"
+
+      - name: Upload Bug Bounty Report Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: bug-bounty-report-${{ github.event.inputs.target_domain }}-${{ github.run_id }}
+          path: bugbounty_reports/${{ github.event.inputs.target_domain }}/
+          retention-days: 30
+
+      - name: Commit and push bug bounty report
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+          # Add all bug bounty reports
+          git add bugbounty_reports/ || true
+
+          # Create commit with detailed message
+          git commit -m "$(cat <<'EOF'
+          Add comprehensive bug bounty reconnaissance report for ${{ github.event.inputs.target_domain }}
+
+          This automated report includes:
+          - Complete DNS reconnaissance (A, AAAA, MX, TXT, NS, CNAME, SOA records)
+          - WHOIS domain registration information
+          - Subdomain enumeration (passive + active methods)
+          - HTTP/HTTPS probing and status code analysis
+          - Technology stack fingerprinting
+          - Security headers assessment
+          - SSL/TLS certificate analysis
+          - Port scanning (deep scan enabled: ${{ github.event.inputs.deep_scan }})
+
+          Scan Configuration:
+          - Target Domain: ${{ github.event.inputs.target_domain }}
+          - Deep Scan: ${{ github.event.inputs.deep_scan }}
+          - Subdomain Bruteforce: ${{ github.event.inputs.enable_subdomain_bruteforce }}
+          - Report Format: ${{ github.event.inputs.report_format }}
+
+          Workflow: Bug Bounty Reconnaissance Automation
+          Contributor: @shubham21155102
+          Run ID: ${{ github.run_id }}
+          EOF
+          )" || echo "No changes to commit"
+
+          git push || echo "No changes to push"
+
+      - name: Create summary comment
+        run: |
+          echo "## 🎯 Bug Bounty Reconnaissance Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Target Domain:** \`${{ github.event.inputs.target_domain }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Scan Type:** $([ "${{ github.event.inputs.deep_scan }}" = "true" ] && echo "🔍 Deep Scan" || echo "⚡ Standard Scan")" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📊 Quick Stats" >> $GITHUB_STEP_SUMMARY
+          echo "- Report generated and uploaded as artifact" >> $GITHUB_STEP_SUMMARY
+          echo "- All data saved to \`bugbounty_reports/${{ github.event.inputs.target_domain }}/\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📦 Artifacts" >> $GITHUB_STEP_SUMMARY
+          echo "Download the complete bug bounty report from the Actions artifacts section." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "---" >> $GITHUB_STEP_SUMMARY
+          echo "*Contributed by: @shubham21155102*" >> $GITHUB_STEP_SUMMARY

@@ -80,6 +80,44 @@ The workflow will:
 - Upload it as an artifact
 - Commit the report to the repository
 
+## 🎯 Bug Bounty Reconnaissance Workflow
+
+**NEW**: Comprehensive bug bounty reconnaissance automation inspired by [reconftw](https://github.com/six2dez/reconftw).
+
+For advanced security reconnaissance and bug bounty hunting:
+
+1. **Go to**: Actions → Bug Bounty Reconnaissance Automation
+2. **Click**: "Run workflow"
+3. **Enter**:
+   - Target domain (e.g., `example.com`)
+   - Enable deep scan (optional, for port scanning)
+   - Enable subdomain bruteforcing (optional)
+   - Report format (markdown, JSON, or HTML)
+4. **Click**: "Run workflow"
+
+### Bug Bounty Workflow Features
+
+The comprehensive bug bounty workflow includes:
+
+- **Advanced Subdomain Enumeration**: Certificate Transparency logs, DNS aggregators, active bruteforcing
+- **Web Service Analysis**: HTTP/HTTPS probing, alive domain detection, technology fingerprinting
+- **Security Assessment**: Security headers analysis, SSL/TLS certificate validation, port scanning
+- **Comprehensive Reporting**: Detailed bug bounty report with findings, recommendations, and methodology
+
+### Quick Comparison
+
+| Feature | Basic DNS Workflow | Bug Bounty Workflow |
+|---------|-------------------|---------------------|
+| DNS Records | ✓ | ✓ |
+| WHOIS | ✓ | ✓ |
+| Subdomain Discovery | Basic | Advanced (CT logs, aggregators) |
+| HTTP Probing | ✗ | ✓ |
+| Security Headers | ✗ | ✓ |
+| SSL/TLS Analysis | ✗ | ✓ |
+| Port Scanning | ✗ | ✓ (deep scan) |
+
+**📖 Full Documentation**: See [BUG_BOUNTY_WORKFLOW.md](BUG_BOUNTY_WORKFLOW.md) for detailed usage and output structure.
+
 ## 📊 Sample Output
 
 The tool will generate comprehensive reports including:
