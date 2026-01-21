@@ -168,8 +168,8 @@ jobs:
                 ip=$(host -W 2 -t A "$subdomain" 2>/dev/null | grep "has address" | head -n1 | awk '{print $4}')
                 if [ -n "$ip" ]; then
                   # Check for HTTP/HTTPS
-                  http_code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 5 "http://${subdomain}" 2>/dev/null)
-                  https_code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 5 "https://${subdomain}" 2>/dev/null)
+                  http_code=$(curl -k -s -o /dev/null -w "%{http_code}" --max-time 5 "http://${subdomain}" 2>/dev/null || echo "000")
+                  https_code=$(curl -k -s -o /dev/null -w "%{http_code}" --max-time 5 "https://${subdomain}" 2>/dev/null || echo "000")
 
                   echo "${subdomain},${ip},HTTP:${http_code},HTTPS:${https_code}"
                 fi
@@ -201,14 +201,14 @@ jobs:
                 echo "[*] Scanning $domain"
 
                 # Get HTTP headers
-                headers=$(curl -s -I --max-time 5 "https://${domain}" 2>/dev/null || curl -s -I --max-time 5 "http://${domain}" 2>/dev/null || echo "")
+                headers=$(curl -k -s -I --max-time 5 "https://${domain}" 2>/dev/null || curl -k -s -I --max-time 5 "http://${domain}" 2>/dev/null || echo "")
 
                 # Extract technology information from headers
                 server=$(echo "$headers" | grep -i "^Server:" | cut -d':' -f2- | xargs)
                 powered_by=$(echo "$headers" | grep -i "^X-Powered-By:" | cut -d':' -f2- | xargs)
 
                 # Get page content for further analysis
-                content=$(curl -s --max-time 5 "https://${domain}" 2>/dev/null || curl -s --max-time 5 "http://${domain}" 2>/dev/null || echo "")
+                content=$(curl -k -s --max-time 5 "https://${domain}" 2>/dev/null || curl -k -s --max-time 5 "http://${domain}" 2>/dev/null || echo "")
 
                 # Detect common technologies
                 tech_found=""
@@ -267,7 +267,7 @@ jobs:
                 echo "### $domain ###" >> "$SECURITY_REPORT"
 
                 # Get headers
-                headers=$(curl -s -I --max-time 5 "https://${domain}" 2>/dev/null || curl -s -I --max-time 5 "http://${domain}" 2>/dev/null || echo "")
+                headers=$(curl -k -s -I --max-time 5 "https://${domain}" 2>/dev/null || curl -k -s -I --max-time 5 "http://${domain}" 2>/dev/null || echo "")
 
                 # Check security headers
                 if echo "$headers" | grep -qi "Strict-Transport-Security"; then
