@@ -59,7 +59,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           # Install additional tools for bug bounty
-          pip install dnsx pyasn aiohttp httpx
+          pip install pyasn aiohttp httpx
+
+      - name: Install dnsx
+        run: |
+          go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest
+          echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
 
       - name: Install system security tools
         run: |
