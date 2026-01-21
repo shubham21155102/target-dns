@@ -38,6 +38,11 @@ jobs:
   bug-bounty-recon:
     name: Comprehensive Bug Bounty Reconnaissance
     runs-on: ubuntu-latest
+    env:
+      TARGET_DOMAIN: ${{ github.event.inputs.target_domain }}
+      DEEP_SCAN: ${{ github.event.inputs.deep_scan }}
+      ENABLE_SUBDOMAIN_BRUTEFORCE: ${{ github.event.inputs.enable_subdomain_bruteforce }}
+      REPORT_FORMAT: ${{ github.event.inputs.report_format }}
 
     steps:
       - name: Checkout repository
@@ -73,29 +78,27 @@ jobs:
 
       - name: Create output directories
         run: |
-          mkdir -p bugbounty_reports/${{ github.event.inputs.target_domain }}
-          mkdir -p bugbounty_reports/${{ github.event.inputs.target_domain }}/subdomains
-          mkdir -p bugbounty_reports/${{ github.event.inputs.target_domain }}/screenshots
-          mkdir -p bugbounty_reports/${{ github.event.inputs.target_domain }}/vulnerabilities
-          mkdir -p bugbounty_reports/${{ github.event.inputs.target_domain }}/assets
+          mkdir -p bugbounty_reports/${TARGET_DOMAIN}
+          mkdir -p bugbounty_reports/${TARGET_DOMAIN}/subdomains
+          mkdir -p bugbounty_reports/${TARGET_DOMAIN}/screenshots
+          mkdir -p bugbounty_reports/${TARGET_DOMAIN}/vulnerabilities
+          mkdir -p bugbounty_reports/${TARGET_DOMAIN}/assets
 
       - name: Run DNS Reconnaissance
         id: dns_recon
         run: |
-          echo "Starting DNS reconnaissance for ${{ github.event.inputs.target_domain }}"
-          python dns_recon.py ${{ github.event.inputs.target_domain }}
+          echo "Starting DNS reconnaissance for ${TARGET_DOMAIN}"
+          python dns_recon.py ${TARGET_DOMAIN}
 
           # Move generated report to bug bounty folder
           if [ -d "reports" ]; then
-            cp -r reports/* bugbounty_reports/${{ github.event.inputs.target_domain }}/ || true
+            cp -r reports/* bugbounty_reports/${TARGET_DOMAIN}/ || true
           fi
-        env:
-          REPORT_FORMAT: ${{ github.event.inputs.report_format }}
 
       - name: Subdomain Enumeration (Passive + Active)
         id: subdomain_enum
         run: |
-          TARGET="${{ github.event.inputs.target_domain }}"
+          TARGET="${TARGET_DOMAIN}"
           OUTPUT_DIR="bugbounty_reports/${TARGET}/subdomains"
 
           echo "=== Performing Subdomain Enumeration ==="
@@ -120,7 +123,7 @@ jobs:
           echo "[+] Found $(wc -l < "${OUTPUT_DIR}/all_passive_subdomains.txt") passive subdomains"
 
           # Active bruteforcing if enabled
-          if [ "${{ github.event.inputs.enable_subdomain_bruteforce }}" = "true" ]; then
+          if [ "${ENABLE_SUBDOMAIN_BRUTEFORCE}" = "true" ]; then
             echo "[*] Performing active subdomain bruteforcing..."
 
             # Use a basic wordlist for demonstration
@@ -142,7 +145,7 @@ jobs:
       - name: DNS Resolution and HTTP Probing
         id: http_probe
         run: |
-          TARGET="${{ github.event.inputs.target_domain }}"
+          TARGET="${TARGET_DOMAIN}"
           OUTPUT_DIR="bugbounty_reports/${TARGET}"
 
           echo "=== Resolving Subdomains and Probing HTTP ==="
@@ -179,7 +182,7 @@ jobs:
       - name: Technology Stack Fingerprinting
         id: tech_fingerprint
         run: |
-          TARGET="${{ github.event.inputs.target_domain }}"
+          TARGET="${TARGET_DOMAIN}"
           OUTPUT_DIR="bugbounty_reports/${TARGET}"
 
           echo "=== Fingerprinting Technology Stacks ==="
@@ -239,7 +242,7 @@ jobs:
       - name: Security Header Analysis
         id: security_headers
         run: |
-          TARGET="${{ github.event.inputs.target_domain }}"
+          TARGET="${TARGET_DOMAIN}"
           OUTPUT_DIR="bugbounty_reports/${TARGET}/vulnerabilities"
 
           echo "=== Analyzing Security Headers ==="
@@ -314,9 +317,9 @@ jobs:
 
       - name: Port Scanning (Quick Top Ports)
         id: port_scan
-        if: github.event.inputs.deep_scan == 'true'
+        if: env.DEEP_SCAN == 'true'
         run: |
-          TARGET="${{ github.event.inputs.target_domain }}"
+          TARGET="${TARGET_DOMAIN}"
           OUTPUT_DIR="bugbounty_reports/${TARGET}/vulnerabilities"
 
           echo "=== Performing Port Scanning ==="
@@ -342,7 +345,7 @@ jobs:
       - name: SSL/TLS Analysis
         id: ssl_analysis
         run: |
-          TARGET="${{ github.event.inputs.target_domain }}"
+          TARGET="${TARGET_DOMAIN}"
           OUTPUT_DIR="bugbounty_reports/${TARGET}/vulnerabilities"
 
           echo "=== SSL/TLS Certificate Analysis ==="
@@ -376,7 +379,7 @@ jobs:
       - name: Generate Bug Bounty Report
         id: generate_report
         run: |
-          TARGET="${{ github.event.inputs.target_domain }}"
+          TARGET="${TARGET_DOMAIN}"
           OUTPUT_DIR="bugbounty_reports/${TARGET}"
           TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 
@@ -384,12 +387,18 @@ jobs:
 
           REPORT_FILE="${OUTPUT_DIR}/BUG_BOUNTY_REPORT_${TIMESTAMP}.md"
 
+          if [ "${DEEP_SCAN}" = "true" ]; then
+            SCAN_TYPE="Deep Scan"
+          else
+            SCAN_TYPE="Standard Scan"
+          fi
+
           cat > "$REPORT_FILE" << EOF
 # Bug Bounty Reconnaissance Report
 
 **Target Domain:** \`${TARGET}\`
 **Report Generated:** $(date)
-**Scan Type:** $([ "${{ github.event.inputs.deep_scan }}" = "true" ] && echo "Deep Scan" || echo "Standard Scan")
+**Scan Type:** ${SCAN_TYPE}
 **Contributor:** @shubham21155102
 
 ---
@@ -489,7 +498,7 @@ EOF
           fi
 
           # Port scanning section if deep scan was enabled
-          if [ "${{ github.event.inputs.deep_scan }}" = "true" ] && [ -f "${OUTPUT_DIR}/vulnerabilities/open_ports_summary.txt" ]; then
+          if [ "${DEEP_SCAN}" = "true" ] && [ -f "${OUTPUT_DIR}/vulnerabilities/open_ports_summary.txt" ]; then
             cat >> "$REPORT_FILE" << EOF
 
 ### 4.3 Open Ports
@@ -604,8 +613,8 @@ EOF
       - name: Upload Bug Bounty Report Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: bug-bounty-report-${{ github.event.inputs.target_domain }}-${{ github.run_id }}
-          path: bugbounty_reports/${{ github.event.inputs.target_domain }}/
+          name: bug-bounty-report-${TARGET_DOMAIN}-${{ github.run_id }}
+          path: bugbounty_reports/${TARGET_DOMAIN}/
           retention-days: 30
 
       - name: Commit and push bug bounty report
@@ -617,30 +626,7 @@ EOF
           git add bugbounty_reports/ || true
 
           # Create commit with detailed message
-          git commit -m "$(cat <<'EOF'
-          Add comprehensive bug bounty reconnaissance report for ${{ github.event.inputs.target_domain }}
-
-          This automated report includes:
-          - Complete DNS reconnaissance (A, AAAA, MX, TXT, NS, CNAME, SOA records)
-          - WHOIS domain registration information
-          - Subdomain enumeration (passive + active methods)
-          - HTTP/HTTPS probing and status code analysis
-          - Technology stack fingerprinting
-          - Security headers assessment
-          - SSL/TLS certificate analysis
-          - Port scanning (deep scan enabled: ${{ github.event.inputs.deep_scan }})
-
-          Scan Configuration:
-          - Target Domain: ${{ github.event.inputs.target_domain }}
-          - Deep Scan: ${{ github.event.inputs.deep_scan }}
-          - Subdomain Bruteforce: ${{ github.event.inputs.enable_subdomain_bruteforce }}
-          - Report Format: ${{ github.event.inputs.report_format }}
-
-          Workflow: Bug Bounty Reconnaissance Automation
-          Contributor: @shubham21155102
-          Run ID: ${{ github.run_id }}
-          EOF
-          )" || echo "No changes to commit"
+          git commit -m "Add comprehensive bug bounty reconnaissance report for ${TARGET_DOMAIN}" || echo "No changes to commit"
 
           git push || echo "No changes to push"
 
@@ -648,12 +634,16 @@ EOF
         run: |
           echo "## 🎯 Bug Bounty Reconnaissance Complete" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Target Domain:** \`${{ github.event.inputs.target_domain }}\`" >> $GITHUB_STEP_SUMMARY
-          echo "**Scan Type:** $([ "${{ github.event.inputs.deep_scan }}" = "true" ] && echo "🔍 Deep Scan" || echo "⚡ Standard Scan")" >> $GITHUB_STEP_SUMMARY
+          echo "**Target Domain:** \`${TARGET_DOMAIN}\`" >> $GITHUB_STEP_SUMMARY
+          if [ "${DEEP_SCAN}" = "true" ]; then
+            echo "**Scan Type:** 🔍 Deep Scan" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "**Scan Type:** ⚡ Standard Scan" >> $GITHUB_STEP_SUMMARY
+          fi
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### 📊 Quick Stats" >> $GITHUB_STEP_SUMMARY
           echo "- Report generated and uploaded as artifact" >> $GITHUB_STEP_SUMMARY
-          echo "- All data saved to \`bugbounty_reports/${{ github.event.inputs.target_domain }}/\`" >> $GITHUB_STEP_SUMMARY
+          echo "- All data saved to \`bugbounty_reports/${TARGET_DOMAIN}/\`" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### 📦 Artifacts" >> $GITHUB_STEP_SUMMARY
           echo "Download the complete bug bounty report from the Actions artifacts section." >> $GITHUB_STEP_SUMMARY
