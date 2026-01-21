@@ -1,0 +1,211 @@
+Security Header Analysis Report
+Generated: Wed Jan 21 11:07:23 UTC 2026
+=====================================
+
+### android.shubhamiitbhu.in ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✗] X-Content-Type-Options: Missing
+[✗] CSP: Missing
+[✗] X-XSS-Protection: Missing
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### api.shubhamiitbhu.in ###
+[✗] HSTS: Missing
+[✗] X-Frame-Options: Missing
+[✗] X-Content-Type-Options: Missing
+[✗] CSP: Missing
+[✗] X-XSS-Protection: Missing
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### ayushcleaning.shubhamiitbhu.in ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✗] X-Content-Type-Options: Missing
+[✗] CSP: Missing
+[✗] X-XSS-Protection: Missing
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### chat.shubhamiitbhu.in ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✗] X-Content-Type-Options: Missing
+[✗] CSP: Missing
+[✗] X-XSS-Protection: Missing
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### compiler.shubhamiitbhu.in ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✗] X-Content-Type-Options: Missing
+[✗] CSP: Missing
+[✗] X-XSS-Protection: Missing
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### crud.redux.shubhamiitbhu.in ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✗] X-Content-Type-Options: Missing
+[✗] CSP: Missing
+[✗] X-XSS-Protection: Missing
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### dart.shubhamiitbhu.in ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✗] X-Content-Type-Options: Missing
+[✗] CSP: Missing
+[✗] X-XSS-Protection: Missing
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### ecommerce.shubhamiitbhu.in ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✗] X-Content-Type-Options: Missing
+[✗] CSP: Missing
+[✗] X-XSS-Protection: Missing
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### fmc.shubhamiitbhu.in ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✗] X-Content-Type-Options: Missing
+[✗] CSP: Missing
+[✗] X-XSS-Protection: Missing
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### fyle.shubhamiitbhu.in ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✗] X-Content-Type-Options: Missing
+[✗] CSP: Missing
+[✗] X-XSS-Protection: Missing
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### jspl.shubhamiitbhu.in ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✗] X-Content-Type-Options: Missing
+[✗] CSP: Missing
+[✗] X-XSS-Protection: Missing
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### learn.shubhamiitbhu.in ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✗] X-Content-Type-Options: Missing
+[✗] CSP: Missing
+[✗] X-XSS-Protection: Missing
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### music.shubhamiitbhu.in ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✗] X-Content-Type-Options: Missing
+[✗] CSP: Missing
+[✗] X-XSS-Protection: Missing
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### naharomfamily.shubhamiitbhu.in ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✗] X-Content-Type-Options: Missing
+[✗] CSP: Missing
+[✗] X-XSS-Protection: Missing
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### payment.shubhamiitbhu.in ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✗] X-Content-Type-Options: Missing
+[✗] CSP: Missing
+[✗] X-XSS-Protection: Missing
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### prabhu.shubhamiitbhu.in ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✗] X-Content-Type-Options: Missing
+[✗] CSP: Missing
+[✗] X-XSS-Protection: Missing
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### quiz.shubhamiitbhu.in ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✗] X-Content-Type-Options: Missing
+[✗] CSP: Missing
+[✗] X-XSS-Protection: Missing
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### quizbackend.shubhamiitbhu.in ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✗] X-Content-Type-Options: Missing
+[✗] CSP: Missing
+[✗] X-XSS-Protection: Missing
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### sfcalculator.shubhamiitbhu.in ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✗] X-Content-Type-Options: Missing
+[✗] CSP: Missing
+[✗] X-XSS-Protection: Missing
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### sob.shubhamiitbhu.in ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✗] X-Content-Type-Options: Missing
+[✗] CSP: Missing
+[✗] X-XSS-Protection: Missing
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### www.ecommerce.shubhamiitbhu.in ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✗] X-Content-Type-Options: Missing
+[✗] CSP: Missing
+[✗] X-XSS-Protection: Missing
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### www.learn.shubhamiitbhu.in ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✗] X-Content-Type-Options: Missing
+[✗] CSP: Missing
+[✗] X-XSS-Protection: Missing
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### www.shubhamiitbhu.in ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✗] X-Content-Type-Options: Missing
+[✗] CSP: Missing
+[✗] X-XSS-Protection: Missing
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+

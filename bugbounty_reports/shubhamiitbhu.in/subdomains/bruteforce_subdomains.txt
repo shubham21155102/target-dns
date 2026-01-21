@@ -1,0 +1,16 @@
+www.shubhamiitbhu.in
+mail.shubhamiitbhu.in
+ftp.shubhamiitbhu.in
+api.shubhamiitbhu.in
+dev.shubhamiitbhu.in
+test.shubhamiitbhu.in
+staging.shubhamiitbhu.in
+admin.shubhamiitbhu.in
+portal.shubhamiitbhu.in
+blog.shubhamiitbhu.in
+app.shubhamiitbhu.in
+mobile.shubhamiitbhu.in
+cdn.shubhamiitbhu.in
+static.shubhamiitbhu.in
+media.shubhamiitbhu.in
+assets.shubhamiitbhu.in

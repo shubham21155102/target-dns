@@ -1,0 +1,9 @@
+# Nmap 7.94SVN scan initiated Wed Jan 21 11:07:30 2026 as: nmap -T4 --top-ports 100 -oN bugbounty_reports/shubhamiitbhu.in/vulnerabilities/nmap_top100.txt 76.76.21.21
+Nmap scan report for 76.76.21.21
+Host is up (0.0062s latency).
+Not shown: 98 filtered tcp ports (no-response)
+PORT    STATE SERVICE
+80/tcp  open  http
+443/tcp open  https
+
+# Nmap done at Wed Jan 21 11:07:32 2026 -- 1 IP address (1 host up) scanned in 2.05 seconds

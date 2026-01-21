@@ -1,0 +1,1200 @@
+SSL/TLS Analysis Report
+Generated: Wed Jan 21 11:07:32 UTC 2026
+=============================
+
+### android.shubhamiitbhu.in ###
+Version: 2.1.2
+OpenSSL 3.0.13 30 Jan 2024
+
+Connected to 66.33.60.66
+
+Testing SSL server android.shubhamiitbhu.in on port 443 using SNI name android.shubhamiitbhu.in
+
+  SSL/TLS Protocols:
+SSLv2     disabled
+SSLv3     disabled
+TLSv1.0   disabled
+TLSv1.1   disabled
+TLSv1.2   enabled
+TLSv1.3   enabled
+
+  TLS Fallback SCSV:
+Server supports TLS Fallback SCSV
+
+  TLS renegotiation:
+Session renegotiation not supported
+
+  TLS Compression:
+OpenSSL version does not support compression
+Rebuild with zlib1g-dev package for zlib support
+
+  Heartbleed:
+TLSv1.3 not vulnerable to heartbleed
+TLSv1.2 not vulnerable to heartbleed
+
+  Supported Server Cipher(s):
+Preferred TLSv1.3  128 bits  TLS_AES_128_GCM_SHA256        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_AES_256_GCM_SHA384        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_CHACHA20_POLY1305_SHA256  Curve 25519 DHE 253
+Preferred TLSv1.2  128 bits  ECDHE-RSA-AES128-GCM-SHA256   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-GCM-SHA384   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-CHACHA20-POLY1305   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-GCM-SHA384     DHE 2048 bits
+
+  Server Key Exchange Group(s):
+TLSv1.3  128 bits  secp256r1 (NIST P-256)
+TLSv1.3  192 bits  secp384r1 (NIST P-384)
+TLSv1.3  260 bits  secp521r1 (NIST P-521)
+TLSv1.3  128 bits  x25519
+TLSv1.2  128 bits  secp256r1 (NIST P-256)
+TLSv1.2  192 bits  secp384r1 (NIST P-384)
+TLSv1.2  260 bits  secp521r1 (NIST P-521)
+TLSv1.2  128 bits  x25519
+
+  SSL Certificate:
+Signature Algorithm: sha256WithRSAEncryption
+
+### api.shubhamiitbhu.in ###
+Version: 2.1.2
+OpenSSL 3.0.13 30 Jan 2024
+
+Connected to 216.24.57.251
+
+Testing SSL server api.shubhamiitbhu.in on port 443 using SNI name api.shubhamiitbhu.in
+
+  SSL/TLS Protocols:
+SSLv2     disabled
+SSLv3     disabled
+TLSv1.0   disabled
+TLSv1.1   disabled
+TLSv1.2   enabled
+TLSv1.3   enabled
+
+  TLS Fallback SCSV:
+Server supports TLS Fallback SCSV
+
+  TLS renegotiation:
+Session renegotiation not supported
+
+  TLS Compression:
+OpenSSL version does not support compression
+Rebuild with zlib1g-dev package for zlib support
+
+  Heartbleed:
+TLSv1.3 not vulnerable to heartbleed
+TLSv1.2 not vulnerable to heartbleed
+
+  Supported Server Cipher(s):
+Preferred TLSv1.3  128 bits  TLS_AES_128_GCM_SHA256        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_AES_256_GCM_SHA384        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_CHACHA20_POLY1305_SHA256  Curve 25519 DHE 253
+Preferred TLSv1.2  128 bits  ECDHE-ECDSA-AES128-GCM-SHA256 Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-ECDSA-CHACHA20-POLY1305 Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-ECDSA-AES256-GCM-SHA384 Curve 25519 DHE 253
+
+  Server Key Exchange Group(s):
+TLSv1.3  128 bits  secp256r1 (NIST P-256)
+TLSv1.3  192 bits  secp384r1 (NIST P-384)
+TLSv1.3  260 bits  secp521r1 (NIST P-521)
+TLSv1.3  128 bits  x25519
+TLSv1.2  128 bits  secp256r1 (NIST P-256)
+TLSv1.2  192 bits  secp384r1 (NIST P-384)
+TLSv1.2  260 bits  secp521r1 (NIST P-521)
+TLSv1.2  128 bits  x25519
+
+  SSL Certificate:
+Signature Algorithm: ecdsa-with-SHA256
+ECC Curve Name:      prime256v1
+
+### ayushcleaning.shubhamiitbhu.in ###
+Version: 2.1.2
+OpenSSL 3.0.13 30 Jan 2024
+
+Connected to 66.33.60.67
+
+Testing SSL server ayushcleaning.shubhamiitbhu.in on port 443 using SNI name ayushcleaning.shubhamiitbhu.in
+
+  SSL/TLS Protocols:
+SSLv2     disabled
+SSLv3     disabled
+TLSv1.0   disabled
+TLSv1.1   disabled
+TLSv1.2   enabled
+TLSv1.3   enabled
+
+  TLS Fallback SCSV:
+Server supports TLS Fallback SCSV
+
+  TLS renegotiation:
+Session renegotiation not supported
+
+  TLS Compression:
+OpenSSL version does not support compression
+Rebuild with zlib1g-dev package for zlib support
+
+  Heartbleed:
+TLSv1.3 not vulnerable to heartbleed
+TLSv1.2 not vulnerable to heartbleed
+
+  Supported Server Cipher(s):
+Preferred TLSv1.3  128 bits  TLS_AES_128_GCM_SHA256        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_AES_256_GCM_SHA384        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_CHACHA20_POLY1305_SHA256  Curve 25519 DHE 253
+Preferred TLSv1.2  128 bits  ECDHE-RSA-AES128-GCM-SHA256   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-GCM-SHA384   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-CHACHA20-POLY1305   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-GCM-SHA384     DHE 2048 bits
+
+  Server Key Exchange Group(s):
+TLSv1.3  128 bits  secp256r1 (NIST P-256)
+TLSv1.3  192 bits  secp384r1 (NIST P-384)
+TLSv1.3  260 bits  secp521r1 (NIST P-521)
+TLSv1.3  128 bits  x25519
+TLSv1.2  128 bits  secp256r1 (NIST P-256)
+TLSv1.2  192 bits  secp384r1 (NIST P-384)
+TLSv1.2  260 bits  secp521r1 (NIST P-521)
+TLSv1.2  128 bits  x25519
+
+  SSL Certificate:
+Signature Algorithm: sha256WithRSAEncryption
+
+### chat.shubhamiitbhu.in ###
+Version: 2.1.2
+OpenSSL 3.0.13 30 Jan 2024
+
+Connected to 66.33.60.35
+
+Testing SSL server chat.shubhamiitbhu.in on port 443 using SNI name chat.shubhamiitbhu.in
+
+  SSL/TLS Protocols:
+SSLv2     disabled
+SSLv3     disabled
+TLSv1.0   disabled
+TLSv1.1   disabled
+TLSv1.2   enabled
+TLSv1.3   enabled
+
+  TLS Fallback SCSV:
+Server supports TLS Fallback SCSV
+
+  TLS renegotiation:
+Session renegotiation not supported
+
+  TLS Compression:
+OpenSSL version does not support compression
+Rebuild with zlib1g-dev package for zlib support
+
+  Heartbleed:
+TLSv1.3 not vulnerable to heartbleed
+TLSv1.2 not vulnerable to heartbleed
+
+  Supported Server Cipher(s):
+Preferred TLSv1.3  128 bits  TLS_AES_128_GCM_SHA256        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_AES_256_GCM_SHA384        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_CHACHA20_POLY1305_SHA256  Curve 25519 DHE 253
+Preferred TLSv1.2  128 bits  ECDHE-RSA-AES128-GCM-SHA256   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-GCM-SHA384   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-CHACHA20-POLY1305   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-GCM-SHA384     DHE 2048 bits
+
+  Server Key Exchange Group(s):
+TLSv1.3  128 bits  secp256r1 (NIST P-256)
+TLSv1.3  192 bits  secp384r1 (NIST P-384)
+TLSv1.3  260 bits  secp521r1 (NIST P-521)
+TLSv1.3  128 bits  x25519
+TLSv1.2  128 bits  secp256r1 (NIST P-256)
+TLSv1.2  192 bits  secp384r1 (NIST P-384)
+TLSv1.2  260 bits  secp521r1 (NIST P-521)
+TLSv1.2  128 bits  x25519
+
+  SSL Certificate:
+Signature Algorithm: sha256WithRSAEncryption
+
+### compiler.shubhamiitbhu.in ###
+Version: 2.1.2
+OpenSSL 3.0.13 30 Jan 2024
+
+Connected to 76.76.21.98
+
+Testing SSL server compiler.shubhamiitbhu.in on port 443 using SNI name compiler.shubhamiitbhu.in
+
+  SSL/TLS Protocols:
+SSLv2     disabled
+SSLv3     disabled
+TLSv1.0   disabled
+TLSv1.1   disabled
+TLSv1.2   enabled
+TLSv1.3   enabled
+
+  TLS Fallback SCSV:
+Server supports TLS Fallback SCSV
+
+  TLS renegotiation:
+Session renegotiation not supported
+
+  TLS Compression:
+OpenSSL version does not support compression
+Rebuild with zlib1g-dev package for zlib support
+
+  Heartbleed:
+TLSv1.3 not vulnerable to heartbleed
+TLSv1.2 not vulnerable to heartbleed
+
+  Supported Server Cipher(s):
+Preferred TLSv1.3  128 bits  TLS_AES_128_GCM_SHA256        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_AES_256_GCM_SHA384        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_CHACHA20_POLY1305_SHA256  Curve 25519 DHE 253
+Preferred TLSv1.2  128 bits  ECDHE-RSA-AES128-GCM-SHA256   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-GCM-SHA384   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-CHACHA20-POLY1305   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-GCM-SHA384     DHE 2048 bits
+
+  Server Key Exchange Group(s):
+TLSv1.3  128 bits  secp256r1 (NIST P-256)
+TLSv1.3  192 bits  secp384r1 (NIST P-384)
+TLSv1.3  260 bits  secp521r1 (NIST P-521)
+TLSv1.3  128 bits  x25519
+TLSv1.2  128 bits  secp256r1 (NIST P-256)
+TLSv1.2  192 bits  secp384r1 (NIST P-384)
+TLSv1.2  260 bits  secp521r1 (NIST P-521)
+TLSv1.2  128 bits  x25519
+
+  SSL Certificate:
+Signature Algorithm: sha256WithRSAEncryption
+
+### crud.redux.shubhamiitbhu.in ###
+Version: 2.1.2
+OpenSSL 3.0.13 30 Jan 2024
+
+Connected to 76.76.21.61
+
+Testing SSL server crud.redux.shubhamiitbhu.in on port 443 using SNI name crud.redux.shubhamiitbhu.in
+
+  SSL/TLS Protocols:
+SSLv2     disabled
+SSLv3     disabled
+TLSv1.0   disabled
+TLSv1.1   disabled
+TLSv1.2   enabled
+TLSv1.3   enabled
+
+  TLS Fallback SCSV:
+Server supports TLS Fallback SCSV
+
+  TLS renegotiation:
+Session renegotiation not supported
+
+  TLS Compression:
+OpenSSL version does not support compression
+Rebuild with zlib1g-dev package for zlib support
+
+  Heartbleed:
+TLSv1.3 not vulnerable to heartbleed
+TLSv1.2 not vulnerable to heartbleed
+
+  Supported Server Cipher(s):
+Preferred TLSv1.3  128 bits  TLS_AES_128_GCM_SHA256        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_AES_256_GCM_SHA384        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_CHACHA20_POLY1305_SHA256  Curve 25519 DHE 253
+Preferred TLSv1.2  128 bits  ECDHE-RSA-AES128-GCM-SHA256   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-GCM-SHA384   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-CHACHA20-POLY1305   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-GCM-SHA384     DHE 2048 bits
+
+  Server Key Exchange Group(s):
+TLSv1.3  128 bits  secp256r1 (NIST P-256)
+TLSv1.3  192 bits  secp384r1 (NIST P-384)
+TLSv1.3  260 bits  secp521r1 (NIST P-521)
+TLSv1.3  128 bits  x25519
+TLSv1.2  128 bits  secp256r1 (NIST P-256)
+TLSv1.2  192 bits  secp384r1 (NIST P-384)
+TLSv1.2  260 bits  secp521r1 (NIST P-521)
+TLSv1.2  128 bits  x25519
+
+  SSL Certificate:
+Signature Algorithm: sha256WithRSAEncryption
+
+### dart.shubhamiitbhu.in ###
+Version: 2.1.2
+OpenSSL 3.0.13 30 Jan 2024
+
+Connected to 66.33.60.35
+
+Testing SSL server dart.shubhamiitbhu.in on port 443 using SNI name dart.shubhamiitbhu.in
+
+  SSL/TLS Protocols:
+SSLv2     disabled
+SSLv3     disabled
+TLSv1.0   disabled
+TLSv1.1   disabled
+TLSv1.2   enabled
+TLSv1.3   enabled
+
+  TLS Fallback SCSV:
+Server supports TLS Fallback SCSV
+
+  TLS renegotiation:
+Session renegotiation not supported
+
+  TLS Compression:
+OpenSSL version does not support compression
+Rebuild with zlib1g-dev package for zlib support
+
+  Heartbleed:
+TLSv1.3 not vulnerable to heartbleed
+TLSv1.2 not vulnerable to heartbleed
+
+  Supported Server Cipher(s):
+Preferred TLSv1.3  128 bits  TLS_AES_128_GCM_SHA256        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_AES_256_GCM_SHA384        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_CHACHA20_POLY1305_SHA256  Curve 25519 DHE 253
+Preferred TLSv1.2  128 bits  ECDHE-RSA-AES128-GCM-SHA256   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-GCM-SHA384   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-CHACHA20-POLY1305   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-GCM-SHA384     DHE 2048 bits
+
+  Server Key Exchange Group(s):
+TLSv1.3  128 bits  secp256r1 (NIST P-256)
+TLSv1.3  192 bits  secp384r1 (NIST P-384)
+TLSv1.3  260 bits  secp521r1 (NIST P-521)
+TLSv1.3  128 bits  x25519
+TLSv1.2  128 bits  secp256r1 (NIST P-256)
+TLSv1.2  192 bits  secp384r1 (NIST P-384)
+TLSv1.2  260 bits  secp521r1 (NIST P-521)
+TLSv1.2  128 bits  x25519
+
+  SSL Certificate:
+Signature Algorithm: sha256WithRSAEncryption
+
+### ecommerce.shubhamiitbhu.in ###
+Version: 2.1.2
+OpenSSL 3.0.13 30 Jan 2024
+
+Connected to 76.76.21.61
+
+Testing SSL server ecommerce.shubhamiitbhu.in on port 443 using SNI name ecommerce.shubhamiitbhu.in
+
+  SSL/TLS Protocols:
+SSLv2     disabled
+SSLv3     disabled
+TLSv1.0   disabled
+TLSv1.1   disabled
+TLSv1.2   enabled
+TLSv1.3   enabled
+
+  TLS Fallback SCSV:
+Server supports TLS Fallback SCSV
+
+  TLS renegotiation:
+Session renegotiation not supported
+
+  TLS Compression:
+OpenSSL version does not support compression
+Rebuild with zlib1g-dev package for zlib support
+
+  Heartbleed:
+TLSv1.3 not vulnerable to heartbleed
+TLSv1.2 not vulnerable to heartbleed
+
+  Supported Server Cipher(s):
+Preferred TLSv1.3  128 bits  TLS_AES_128_GCM_SHA256        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_AES_256_GCM_SHA384        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_CHACHA20_POLY1305_SHA256  Curve 25519 DHE 253
+Preferred TLSv1.2  128 bits  ECDHE-RSA-AES128-GCM-SHA256   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-GCM-SHA384   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-CHACHA20-POLY1305   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-GCM-SHA384     DHE 2048 bits
+
+  Server Key Exchange Group(s):
+TLSv1.3  128 bits  secp256r1 (NIST P-256)
+TLSv1.3  192 bits  secp384r1 (NIST P-384)
+TLSv1.3  260 bits  secp521r1 (NIST P-521)
+TLSv1.3  128 bits  x25519
+TLSv1.2  128 bits  secp256r1 (NIST P-256)
+TLSv1.2  192 bits  secp384r1 (NIST P-384)
+TLSv1.2  260 bits  secp521r1 (NIST P-521)
+TLSv1.2  128 bits  x25519
+
+  SSL Certificate:
+Signature Algorithm: sha256WithRSAEncryption
+
+### fmc.shubhamiitbhu.in ###
+Version: 2.1.2
+OpenSSL 3.0.13 30 Jan 2024
+
+Connected to 76.76.21.142
+
+Testing SSL server fmc.shubhamiitbhu.in on port 443 using SNI name fmc.shubhamiitbhu.in
+
+  SSL/TLS Protocols:
+SSLv2     disabled
+SSLv3     disabled
+TLSv1.0   disabled
+TLSv1.1   disabled
+TLSv1.2   enabled
+TLSv1.3   enabled
+
+  TLS Fallback SCSV:
+Server supports TLS Fallback SCSV
+
+  TLS renegotiation:
+Session renegotiation not supported
+
+  TLS Compression:
+OpenSSL version does not support compression
+Rebuild with zlib1g-dev package for zlib support
+
+  Heartbleed:
+TLSv1.3 not vulnerable to heartbleed
+TLSv1.2 not vulnerable to heartbleed
+
+  Supported Server Cipher(s):
+Preferred TLSv1.3  128 bits  TLS_AES_128_GCM_SHA256        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_AES_256_GCM_SHA384        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_CHACHA20_POLY1305_SHA256  Curve 25519 DHE 253
+Preferred TLSv1.2  128 bits  ECDHE-RSA-AES128-GCM-SHA256   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-GCM-SHA384   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-CHACHA20-POLY1305   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-GCM-SHA384     DHE 2048 bits
+
+  Server Key Exchange Group(s):
+TLSv1.3  128 bits  secp256r1 (NIST P-256)
+TLSv1.3  192 bits  secp384r1 (NIST P-384)
+TLSv1.3  260 bits  secp521r1 (NIST P-521)
+TLSv1.3  128 bits  x25519
+TLSv1.2  128 bits  secp256r1 (NIST P-256)
+TLSv1.2  192 bits  secp384r1 (NIST P-384)
+TLSv1.2  260 bits  secp521r1 (NIST P-521)
+TLSv1.2  128 bits  x25519
+
+  SSL Certificate:
+Signature Algorithm: sha256WithRSAEncryption
+
+### fyle.shubhamiitbhu.in ###
+Version: 2.1.2
+OpenSSL 3.0.13 30 Jan 2024
+
+Connected to 66.33.60.67
+
+Testing SSL server fyle.shubhamiitbhu.in on port 443 using SNI name fyle.shubhamiitbhu.in
+
+  SSL/TLS Protocols:
+SSLv2     disabled
+SSLv3     disabled
+TLSv1.0   disabled
+TLSv1.1   disabled
+TLSv1.2   enabled
+TLSv1.3   enabled
+
+  TLS Fallback SCSV:
+Server supports TLS Fallback SCSV
+
+  TLS renegotiation:
+Session renegotiation not supported
+
+  TLS Compression:
+OpenSSL version does not support compression
+Rebuild with zlib1g-dev package for zlib support
+
+  Heartbleed:
+TLSv1.3 not vulnerable to heartbleed
+TLSv1.2 not vulnerable to heartbleed
+
+  Supported Server Cipher(s):
+Preferred TLSv1.3  128 bits  TLS_AES_128_GCM_SHA256        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_AES_256_GCM_SHA384        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_CHACHA20_POLY1305_SHA256  Curve 25519 DHE 253
+Preferred TLSv1.2  128 bits  ECDHE-RSA-AES128-GCM-SHA256   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-GCM-SHA384   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-CHACHA20-POLY1305   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-GCM-SHA384     DHE 2048 bits
+
+  Server Key Exchange Group(s):
+TLSv1.3  128 bits  secp256r1 (NIST P-256)
+TLSv1.3  192 bits  secp384r1 (NIST P-384)
+TLSv1.3  260 bits  secp521r1 (NIST P-521)
+TLSv1.3  128 bits  x25519
+TLSv1.2  128 bits  secp256r1 (NIST P-256)
+TLSv1.2  192 bits  secp384r1 (NIST P-384)
+TLSv1.2  260 bits  secp521r1 (NIST P-521)
+TLSv1.2  128 bits  x25519
+
+  SSL Certificate:
+Signature Algorithm: sha256WithRSAEncryption
+
+### jspl.shubhamiitbhu.in ###
+Version: 2.1.2
+OpenSSL 3.0.13 30 Jan 2024
+
+Connected to 76.76.21.22
+
+Testing SSL server jspl.shubhamiitbhu.in on port 443 using SNI name jspl.shubhamiitbhu.in
+
+  SSL/TLS Protocols:
+SSLv2     disabled
+SSLv3     disabled
+TLSv1.0   disabled
+TLSv1.1   disabled
+TLSv1.2   enabled
+TLSv1.3   enabled
+
+  TLS Fallback SCSV:
+Server supports TLS Fallback SCSV
+
+  TLS renegotiation:
+Session renegotiation not supported
+
+  TLS Compression:
+OpenSSL version does not support compression
+Rebuild with zlib1g-dev package for zlib support
+
+  Heartbleed:
+TLSv1.3 not vulnerable to heartbleed
+TLSv1.2 not vulnerable to heartbleed
+
+  Supported Server Cipher(s):
+Preferred TLSv1.3  128 bits  TLS_AES_128_GCM_SHA256        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_AES_256_GCM_SHA384        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_CHACHA20_POLY1305_SHA256  Curve 25519 DHE 253
+Preferred TLSv1.2  128 bits  ECDHE-RSA-AES128-GCM-SHA256   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-GCM-SHA384   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-CHACHA20-POLY1305   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-GCM-SHA384     DHE 2048 bits
+
+  Server Key Exchange Group(s):
+TLSv1.3  128 bits  secp256r1 (NIST P-256)
+TLSv1.3  192 bits  secp384r1 (NIST P-384)
+TLSv1.3  260 bits  secp521r1 (NIST P-521)
+TLSv1.3  128 bits  x25519
+TLSv1.2  128 bits  secp256r1 (NIST P-256)
+TLSv1.2  192 bits  secp384r1 (NIST P-384)
+TLSv1.2  260 bits  secp521r1 (NIST P-521)
+TLSv1.2  128 bits  x25519
+
+  SSL Certificate:
+Signature Algorithm: sha256WithRSAEncryption
+
+### learn.shubhamiitbhu.in ###
+Version: 2.1.2
+OpenSSL 3.0.13 30 Jan 2024
+
+Connected to 66.33.60.35
+
+Testing SSL server learn.shubhamiitbhu.in on port 443 using SNI name learn.shubhamiitbhu.in
+
+  SSL/TLS Protocols:
+SSLv2     disabled
+SSLv3     disabled
+TLSv1.0   disabled
+TLSv1.1   disabled
+TLSv1.2   enabled
+TLSv1.3   enabled
+
+  TLS Fallback SCSV:
+Server supports TLS Fallback SCSV
+
+  TLS renegotiation:
+Session renegotiation not supported
+
+  TLS Compression:
+OpenSSL version does not support compression
+Rebuild with zlib1g-dev package for zlib support
+
+  Heartbleed:
+TLSv1.3 not vulnerable to heartbleed
+TLSv1.2 not vulnerable to heartbleed
+
+  Supported Server Cipher(s):
+Preferred TLSv1.3  128 bits  TLS_AES_128_GCM_SHA256        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_AES_256_GCM_SHA384        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_CHACHA20_POLY1305_SHA256  Curve 25519 DHE 253
+Preferred TLSv1.2  128 bits  ECDHE-RSA-AES128-GCM-SHA256   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-GCM-SHA384   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-CHACHA20-POLY1305   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-GCM-SHA384     DHE 2048 bits
+
+  Server Key Exchange Group(s):
+TLSv1.3  128 bits  secp256r1 (NIST P-256)
+TLSv1.3  192 bits  secp384r1 (NIST P-384)
+TLSv1.3  260 bits  secp521r1 (NIST P-521)
+TLSv1.3  128 bits  x25519
+TLSv1.2  128 bits  secp256r1 (NIST P-256)
+TLSv1.2  192 bits  secp384r1 (NIST P-384)
+TLSv1.2  260 bits  secp521r1 (NIST P-521)
+TLSv1.2  128 bits  x25519
+
+  SSL Certificate:
+Signature Algorithm: sha256WithRSAEncryption
+
+### music.shubhamiitbhu.in ###
+Version: 2.1.2
+OpenSSL 3.0.13 30 Jan 2024
+
+Connected to 76.76.21.98
+
+Testing SSL server music.shubhamiitbhu.in on port 443 using SNI name music.shubhamiitbhu.in
+
+  SSL/TLS Protocols:
+SSLv2     disabled
+SSLv3     disabled
+TLSv1.0   disabled
+TLSv1.1   disabled
+TLSv1.2   enabled
+TLSv1.3   enabled
+
+  TLS Fallback SCSV:
+Server supports TLS Fallback SCSV
+
+  TLS renegotiation:
+Session renegotiation not supported
+
+  TLS Compression:
+OpenSSL version does not support compression
+Rebuild with zlib1g-dev package for zlib support
+
+  Heartbleed:
+TLSv1.3 not vulnerable to heartbleed
+TLSv1.2 not vulnerable to heartbleed
+
+  Supported Server Cipher(s):
+Preferred TLSv1.3  128 bits  TLS_AES_128_GCM_SHA256        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_AES_256_GCM_SHA384        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_CHACHA20_POLY1305_SHA256  Curve 25519 DHE 253
+Preferred TLSv1.2  128 bits  ECDHE-RSA-AES128-GCM-SHA256   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-GCM-SHA384   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-CHACHA20-POLY1305   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-GCM-SHA384     DHE 2048 bits
+
+  Server Key Exchange Group(s):
+TLSv1.3  128 bits  secp256r1 (NIST P-256)
+TLSv1.3  192 bits  secp384r1 (NIST P-384)
+TLSv1.3  260 bits  secp521r1 (NIST P-521)
+TLSv1.3  128 bits  x25519
+TLSv1.2  128 bits  secp256r1 (NIST P-256)
+TLSv1.2  192 bits  secp384r1 (NIST P-384)
+TLSv1.2  260 bits  secp521r1 (NIST P-521)
+TLSv1.2  128 bits  x25519
+
+  SSL Certificate:
+Signature Algorithm: sha256WithRSAEncryption
+
+### naharomfamily.shubhamiitbhu.in ###
+Version: 2.1.2
+OpenSSL 3.0.13 30 Jan 2024
+
+Connected to 76.76.21.22
+
+Testing SSL server naharomfamily.shubhamiitbhu.in on port 443 using SNI name naharomfamily.shubhamiitbhu.in
+
+  SSL/TLS Protocols:
+SSLv2     disabled
+SSLv3     disabled
+TLSv1.0   disabled
+TLSv1.1   disabled
+TLSv1.2   enabled
+TLSv1.3   enabled
+
+  TLS Fallback SCSV:
+Server supports TLS Fallback SCSV
+
+  TLS renegotiation:
+Session renegotiation not supported
+
+  TLS Compression:
+OpenSSL version does not support compression
+Rebuild with zlib1g-dev package for zlib support
+
+  Heartbleed:
+TLSv1.3 not vulnerable to heartbleed
+TLSv1.2 not vulnerable to heartbleed
+
+  Supported Server Cipher(s):
+Preferred TLSv1.3  128 bits  TLS_AES_128_GCM_SHA256        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_AES_256_GCM_SHA384        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_CHACHA20_POLY1305_SHA256  Curve 25519 DHE 253
+Preferred TLSv1.2  128 bits  ECDHE-RSA-AES128-GCM-SHA256   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-GCM-SHA384   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-CHACHA20-POLY1305   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-GCM-SHA384     DHE 2048 bits
+
+  Server Key Exchange Group(s):
+TLSv1.3  128 bits  secp256r1 (NIST P-256)
+TLSv1.3  192 bits  secp384r1 (NIST P-384)
+TLSv1.3  260 bits  secp521r1 (NIST P-521)
+TLSv1.3  128 bits  x25519
+TLSv1.2  128 bits  secp256r1 (NIST P-256)
+TLSv1.2  192 bits  secp384r1 (NIST P-384)
+TLSv1.2  260 bits  secp521r1 (NIST P-521)
+TLSv1.2  128 bits  x25519
+
+  SSL Certificate:
+Signature Algorithm: sha256WithRSAEncryption
+
+### payment.shubhamiitbhu.in ###
+Version: 2.1.2
+OpenSSL 3.0.13 30 Jan 2024
+
+Connected to 66.33.60.66
+
+Testing SSL server payment.shubhamiitbhu.in on port 443 using SNI name payment.shubhamiitbhu.in
+
+  SSL/TLS Protocols:
+SSLv2     disabled
+SSLv3     disabled
+TLSv1.0   disabled
+TLSv1.1   disabled
+TLSv1.2   enabled
+TLSv1.3   enabled
+
+  TLS Fallback SCSV:
+Server supports TLS Fallback SCSV
+
+  TLS renegotiation:
+Session renegotiation not supported
+
+  TLS Compression:
+OpenSSL version does not support compression
+Rebuild with zlib1g-dev package for zlib support
+
+  Heartbleed:
+TLSv1.3 not vulnerable to heartbleed
+TLSv1.2 not vulnerable to heartbleed
+
+  Supported Server Cipher(s):
+Preferred TLSv1.3  128 bits  TLS_AES_128_GCM_SHA256        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_AES_256_GCM_SHA384        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_CHACHA20_POLY1305_SHA256  Curve 25519 DHE 253
+Preferred TLSv1.2  128 bits  ECDHE-RSA-AES128-GCM-SHA256   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-GCM-SHA384   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-CHACHA20-POLY1305   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-GCM-SHA384     DHE 2048 bits
+
+  Server Key Exchange Group(s):
+TLSv1.3  128 bits  secp256r1 (NIST P-256)
+TLSv1.3  192 bits  secp384r1 (NIST P-384)
+TLSv1.3  260 bits  secp521r1 (NIST P-521)
+TLSv1.3  128 bits  x25519
+TLSv1.2  128 bits  secp256r1 (NIST P-256)
+TLSv1.2  192 bits  secp384r1 (NIST P-384)
+TLSv1.2  260 bits  secp521r1 (NIST P-521)
+TLSv1.2  128 bits  x25519
+
+  SSL Certificate:
+Signature Algorithm: sha256WithRSAEncryption
+
+### prabhu.shubhamiitbhu.in ###
+Version: 2.1.2
+OpenSSL 3.0.13 30 Jan 2024
+
+Connected to 76.76.21.61
+
+Testing SSL server prabhu.shubhamiitbhu.in on port 443 using SNI name prabhu.shubhamiitbhu.in
+
+  SSL/TLS Protocols:
+SSLv2     disabled
+SSLv3     disabled
+TLSv1.0   disabled
+TLSv1.1   disabled
+TLSv1.2   enabled
+TLSv1.3   enabled
+
+  TLS Fallback SCSV:
+Server supports TLS Fallback SCSV
+
+  TLS renegotiation:
+Session renegotiation not supported
+
+  TLS Compression:
+OpenSSL version does not support compression
+Rebuild with zlib1g-dev package for zlib support
+
+  Heartbleed:
+TLSv1.3 not vulnerable to heartbleed
+TLSv1.2 not vulnerable to heartbleed
+
+  Supported Server Cipher(s):
+Preferred TLSv1.3  128 bits  TLS_AES_128_GCM_SHA256        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_AES_256_GCM_SHA384        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_CHACHA20_POLY1305_SHA256  Curve 25519 DHE 253
+Preferred TLSv1.2  128 bits  ECDHE-RSA-AES128-GCM-SHA256   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-GCM-SHA384   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-CHACHA20-POLY1305   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-GCM-SHA384     DHE 2048 bits
+
+  Server Key Exchange Group(s):
+TLSv1.3  128 bits  secp256r1 (NIST P-256)
+TLSv1.3  192 bits  secp384r1 (NIST P-384)
+TLSv1.3  260 bits  secp521r1 (NIST P-521)
+TLSv1.3  128 bits  x25519
+TLSv1.2  128 bits  secp256r1 (NIST P-256)
+TLSv1.2  192 bits  secp384r1 (NIST P-384)
+TLSv1.2  260 bits  secp521r1 (NIST P-521)
+TLSv1.2  128 bits  x25519
+
+  SSL Certificate:
+Signature Algorithm: sha256WithRSAEncryption
+
+### quiz.shubhamiitbhu.in ###
+Version: 2.1.2
+OpenSSL 3.0.13 30 Jan 2024
+
+Connected to 76.76.21.164
+
+Testing SSL server quiz.shubhamiitbhu.in on port 443 using SNI name quiz.shubhamiitbhu.in
+
+  SSL/TLS Protocols:
+SSLv2     disabled
+SSLv3     disabled
+TLSv1.0   disabled
+TLSv1.1   disabled
+TLSv1.2   enabled
+TLSv1.3   enabled
+
+  TLS Fallback SCSV:
+Server supports TLS Fallback SCSV
+
+  TLS renegotiation:
+Session renegotiation not supported
+
+  TLS Compression:
+OpenSSL version does not support compression
+Rebuild with zlib1g-dev package for zlib support
+
+  Heartbleed:
+TLSv1.3 not vulnerable to heartbleed
+TLSv1.2 not vulnerable to heartbleed
+
+  Supported Server Cipher(s):
+Preferred TLSv1.3  128 bits  TLS_AES_128_GCM_SHA256        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_AES_256_GCM_SHA384        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_CHACHA20_POLY1305_SHA256  Curve 25519 DHE 253
+Preferred TLSv1.2  128 bits  ECDHE-RSA-AES128-GCM-SHA256   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-GCM-SHA384   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-CHACHA20-POLY1305   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-GCM-SHA384     DHE 2048 bits
+
+  Server Key Exchange Group(s):
+TLSv1.3  128 bits  secp256r1 (NIST P-256)
+TLSv1.3  192 bits  secp384r1 (NIST P-384)
+TLSv1.3  260 bits  secp521r1 (NIST P-521)
+TLSv1.3  128 bits  x25519
+TLSv1.2  128 bits  secp256r1 (NIST P-256)
+TLSv1.2  192 bits  secp384r1 (NIST P-384)
+TLSv1.2  260 bits  secp521r1 (NIST P-521)
+TLSv1.2  128 bits  x25519
+
+  SSL Certificate:
+Signature Algorithm: sha256WithRSAEncryption
+
+### quizbackend.shubhamiitbhu.in ###
+Version: 2.1.2
+OpenSSL 3.0.13 30 Jan 2024
+
+Connected to 76.76.21.142
+
+Testing SSL server quizbackend.shubhamiitbhu.in on port 443 using SNI name quizbackend.shubhamiitbhu.in
+
+  SSL/TLS Protocols:
+SSLv2     disabled
+SSLv3     disabled
+TLSv1.0   disabled
+TLSv1.1   disabled
+TLSv1.2   enabled
+TLSv1.3   enabled
+
+  TLS Fallback SCSV:
+Server supports TLS Fallback SCSV
+
+  TLS renegotiation:
+Session renegotiation not supported
+
+  TLS Compression:
+OpenSSL version does not support compression
+Rebuild with zlib1g-dev package for zlib support
+
+  Heartbleed:
+TLSv1.3 not vulnerable to heartbleed
+TLSv1.2 not vulnerable to heartbleed
+
+  Supported Server Cipher(s):
+Preferred TLSv1.3  128 bits  TLS_AES_128_GCM_SHA256        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_AES_256_GCM_SHA384        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_CHACHA20_POLY1305_SHA256  Curve 25519 DHE 253
+Preferred TLSv1.2  128 bits  ECDHE-RSA-AES128-GCM-SHA256   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-GCM-SHA384   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-CHACHA20-POLY1305   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-GCM-SHA384     DHE 2048 bits
+
+  Server Key Exchange Group(s):
+TLSv1.3  128 bits  secp256r1 (NIST P-256)
+TLSv1.3  192 bits  secp384r1 (NIST P-384)
+TLSv1.3  260 bits  secp521r1 (NIST P-521)
+TLSv1.3  128 bits  x25519
+TLSv1.2  128 bits  secp256r1 (NIST P-256)
+TLSv1.2  192 bits  secp384r1 (NIST P-384)
+TLSv1.2  260 bits  secp521r1 (NIST P-521)
+TLSv1.2  128 bits  x25519
+
+  SSL Certificate:
+Signature Algorithm: sha256WithRSAEncryption
+
+### sfcalculator.shubhamiitbhu.in ###
+Version: 2.1.2
+OpenSSL 3.0.13 30 Jan 2024
+
+Connected to 66.33.60.129
+
+Testing SSL server sfcalculator.shubhamiitbhu.in on port 443 using SNI name sfcalculator.shubhamiitbhu.in
+
+  SSL/TLS Protocols:
+SSLv2     disabled
+SSLv3     disabled
+TLSv1.0   disabled
+TLSv1.1   disabled
+TLSv1.2   enabled
+TLSv1.3   enabled
+
+  TLS Fallback SCSV:
+Server supports TLS Fallback SCSV
+
+  TLS renegotiation:
+Session renegotiation not supported
+
+  TLS Compression:
+OpenSSL version does not support compression
+Rebuild with zlib1g-dev package for zlib support
+
+  Heartbleed:
+TLSv1.3 not vulnerable to heartbleed
+TLSv1.2 not vulnerable to heartbleed
+
+  Supported Server Cipher(s):
+Preferred TLSv1.3  128 bits  TLS_AES_128_GCM_SHA256        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_AES_256_GCM_SHA384        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_CHACHA20_POLY1305_SHA256  Curve 25519 DHE 253
+Preferred TLSv1.2  128 bits  ECDHE-RSA-AES128-GCM-SHA256   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-GCM-SHA384   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-CHACHA20-POLY1305   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-GCM-SHA384     DHE 2048 bits
+
+  Server Key Exchange Group(s):
+TLSv1.3  128 bits  secp256r1 (NIST P-256)
+TLSv1.3  192 bits  secp384r1 (NIST P-384)
+TLSv1.3  260 bits  secp521r1 (NIST P-521)
+TLSv1.3  128 bits  x25519
+TLSv1.2  128 bits  secp256r1 (NIST P-256)
+TLSv1.2  192 bits  secp384r1 (NIST P-384)
+TLSv1.2  260 bits  secp521r1 (NIST P-521)
+TLSv1.2  128 bits  x25519
+
+  SSL Certificate:
+Signature Algorithm: sha256WithRSAEncryption
+
+### sob.shubhamiitbhu.in ###
+Version: 2.1.2
+OpenSSL 3.0.13 30 Jan 2024
+
+Connected to 66.33.60.130
+
+Testing SSL server sob.shubhamiitbhu.in on port 443 using SNI name sob.shubhamiitbhu.in
+
+  SSL/TLS Protocols:
+SSLv2     disabled
+SSLv3     disabled
+TLSv1.0   disabled
+TLSv1.1   disabled
+TLSv1.2   enabled
+TLSv1.3   enabled
+
+  TLS Fallback SCSV:
+Server supports TLS Fallback SCSV
+
+  TLS renegotiation:
+Session renegotiation not supported
+
+  TLS Compression:
+OpenSSL version does not support compression
+Rebuild with zlib1g-dev package for zlib support
+
+  Heartbleed:
+TLSv1.3 not vulnerable to heartbleed
+TLSv1.2 not vulnerable to heartbleed
+
+  Supported Server Cipher(s):
+Preferred TLSv1.3  128 bits  TLS_AES_128_GCM_SHA256        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_AES_256_GCM_SHA384        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_CHACHA20_POLY1305_SHA256  Curve 25519 DHE 253
+Preferred TLSv1.2  128 bits  ECDHE-RSA-AES128-GCM-SHA256   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-GCM-SHA384   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-CHACHA20-POLY1305   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-GCM-SHA384     DHE 2048 bits
+
+  Server Key Exchange Group(s):
+TLSv1.3  128 bits  secp256r1 (NIST P-256)
+TLSv1.3  192 bits  secp384r1 (NIST P-384)
+TLSv1.3  260 bits  secp521r1 (NIST P-521)
+TLSv1.3  128 bits  x25519
+TLSv1.2  128 bits  secp256r1 (NIST P-256)
+TLSv1.2  192 bits  secp384r1 (NIST P-384)
+TLSv1.2  260 bits  secp521r1 (NIST P-521)
+TLSv1.2  128 bits  x25519
+
+  SSL Certificate:
+Signature Algorithm: sha256WithRSAEncryption
+
+### www.ecommerce.shubhamiitbhu.in ###
+Version: 2.1.2
+OpenSSL 3.0.13 30 Jan 2024
+
+Connected to 76.76.21.61
+
+Testing SSL server www.ecommerce.shubhamiitbhu.in on port 443 using SNI name www.ecommerce.shubhamiitbhu.in
+
+  SSL/TLS Protocols:
+SSLv2     disabled
+SSLv3     disabled
+TLSv1.0   disabled
+TLSv1.1   disabled
+TLSv1.2   enabled
+TLSv1.3   enabled
+
+  TLS Fallback SCSV:
+Server supports TLS Fallback SCSV
+
+  TLS renegotiation:
+Session renegotiation not supported
+
+  TLS Compression:
+OpenSSL version does not support compression
+Rebuild with zlib1g-dev package for zlib support
+
+  Heartbleed:
+TLSv1.3 not vulnerable to heartbleed
+TLSv1.2 not vulnerable to heartbleed
+
+  Supported Server Cipher(s):
+Preferred TLSv1.3  128 bits  TLS_AES_128_GCM_SHA256        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_AES_256_GCM_SHA384        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_CHACHA20_POLY1305_SHA256  Curve 25519 DHE 253
+Preferred TLSv1.2  128 bits  ECDHE-RSA-AES128-GCM-SHA256   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-GCM-SHA384   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-CHACHA20-POLY1305   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-GCM-SHA384     DHE 2048 bits
+
+  Server Key Exchange Group(s):
+TLSv1.3  128 bits  secp256r1 (NIST P-256)
+TLSv1.3  192 bits  secp384r1 (NIST P-384)
+TLSv1.3  260 bits  secp521r1 (NIST P-521)
+TLSv1.3  128 bits  x25519
+TLSv1.2  128 bits  secp256r1 (NIST P-256)
+TLSv1.2  192 bits  secp384r1 (NIST P-384)
+TLSv1.2  260 bits  secp521r1 (NIST P-521)
+TLSv1.2  128 bits  x25519
+
+  SSL Certificate:
+Signature Algorithm: sha256WithRSAEncryption
+
+### www.learn.shubhamiitbhu.in ###
+Version: 2.1.2
+OpenSSL 3.0.13 30 Jan 2024
+
+Connected to 66.33.60.129
+
+Testing SSL server www.learn.shubhamiitbhu.in on port 443 using SNI name www.learn.shubhamiitbhu.in
+
+  SSL/TLS Protocols:
+SSLv2     disabled
+SSLv3     disabled
+TLSv1.0   disabled
+TLSv1.1   disabled
+TLSv1.2   enabled
+TLSv1.3   enabled
+
+  TLS Fallback SCSV:
+Server supports TLS Fallback SCSV
+
+  TLS renegotiation:
+Session renegotiation not supported
+
+  TLS Compression:
+OpenSSL version does not support compression
+Rebuild with zlib1g-dev package for zlib support
+
+  Heartbleed:
+TLSv1.3 not vulnerable to heartbleed
+TLSv1.2 not vulnerable to heartbleed
+
+  Supported Server Cipher(s):
+Preferred TLSv1.3  128 bits  TLS_AES_128_GCM_SHA256        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_AES_256_GCM_SHA384        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_CHACHA20_POLY1305_SHA256  Curve 25519 DHE 253
+Preferred TLSv1.2  128 bits  ECDHE-RSA-AES128-GCM-SHA256   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-GCM-SHA384   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-CHACHA20-POLY1305   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-GCM-SHA384     DHE 2048 bits
+
+  Server Key Exchange Group(s):
+TLSv1.3  128 bits  secp256r1 (NIST P-256)
+TLSv1.3  192 bits  secp384r1 (NIST P-384)
+TLSv1.3  260 bits  secp521r1 (NIST P-521)
+TLSv1.3  128 bits  x25519
+TLSv1.2  128 bits  secp256r1 (NIST P-256)
+TLSv1.2  192 bits  secp384r1 (NIST P-384)
+TLSv1.2  260 bits  secp521r1 (NIST P-521)
+TLSv1.2  128 bits  x25519
+
+  SSL Certificate:
+Signature Algorithm: sha256WithRSAEncryption
+
+### www.shubhamiitbhu.in ###
+Version: 2.1.2
+OpenSSL 3.0.13 30 Jan 2024
+
+Connected to 76.76.21.61
+
+Testing SSL server www.shubhamiitbhu.in on port 443 using SNI name www.shubhamiitbhu.in
+
+  SSL/TLS Protocols:
+SSLv2     disabled
+SSLv3     disabled
+TLSv1.0   disabled
+TLSv1.1   disabled
+TLSv1.2   enabled
+TLSv1.3   enabled
+
+  TLS Fallback SCSV:
+Server supports TLS Fallback SCSV
+
+  TLS renegotiation:
+Session renegotiation not supported
+
+  TLS Compression:
+OpenSSL version does not support compression
+Rebuild with zlib1g-dev package for zlib support
+
+  Heartbleed:
+TLSv1.3 not vulnerable to heartbleed
+TLSv1.2 not vulnerable to heartbleed
+
+  Supported Server Cipher(s):
+Preferred TLSv1.3  128 bits  TLS_AES_128_GCM_SHA256        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_AES_256_GCM_SHA384        Curve 25519 DHE 253
+Accepted  TLSv1.3  256 bits  TLS_CHACHA20_POLY1305_SHA256  Curve 25519 DHE 253
+Preferred TLSv1.2  128 bits  ECDHE-RSA-AES128-GCM-SHA256   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-GCM-SHA384   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-CHACHA20-POLY1305   Curve 25519 DHE 253
+Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-GCM-SHA384     DHE 2048 bits
+
+  Server Key Exchange Group(s):
+TLSv1.3  128 bits  secp256r1 (NIST P-256)
+TLSv1.3  192 bits  secp384r1 (NIST P-384)
+TLSv1.3  260 bits  secp521r1 (NIST P-521)
+TLSv1.3  128 bits  x25519
+TLSv1.2  128 bits  secp256r1 (NIST P-256)
+TLSv1.2  192 bits  secp384r1 (NIST P-384)
+TLSv1.2  260 bits  secp521r1 (NIST P-521)
+TLSv1.2  128 bits  x25519
+
+  SSL Certificate:
+Signature Algorithm: sha256WithRSAEncryption
+

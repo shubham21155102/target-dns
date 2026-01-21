@@ -1,0 +1,46 @@
+[*] Scanning android.shubhamiitbhu.in
+android.shubhamiitbhu.in | Server: Vercel | Powered-By: None | Technologies:  React
+[*] Scanning api.shubhamiitbhu.in
+api.shubhamiitbhu.in | Server: cloudflare | Powered-By: None | Technologies: None detected
+[*] Scanning ayushcleaning.shubhamiitbhu.in
+ayushcleaning.shubhamiitbhu.in | Server: Vercel | Powered-By: None | Technologies:  React
+[*] Scanning chat.shubhamiitbhu.in
+chat.shubhamiitbhu.in | Server: Vercel | Powered-By: None | Technologies:  React
+[*] Scanning compiler.shubhamiitbhu.in
+compiler.shubhamiitbhu.in | Server: Vercel | Powered-By: None | Technologies:  React
+[*] Scanning crud.redux.shubhamiitbhu.in
+crud.redux.shubhamiitbhu.in | Server: Vercel | Powered-By: None | Technologies:  React
+[*] Scanning dart.shubhamiitbhu.in
+dart.shubhamiitbhu.in | Server: Vercel | Powered-By: None | Technologies: None detected
+[*] Scanning ecommerce.shubhamiitbhu.in
+ecommerce.shubhamiitbhu.in | Server: Vercel | Powered-By: None | Technologies:  React
+[*] Scanning fmc.shubhamiitbhu.in
+fmc.shubhamiitbhu.in | Server: Vercel | Powered-By: None | Technologies:  React
+[*] Scanning fyle.shubhamiitbhu.in
+fyle.shubhamiitbhu.in | Server: Vercel | Powered-By: None | Technologies: None detected
+[*] Scanning jspl.shubhamiitbhu.in
+jspl.shubhamiitbhu.in | Server: Vercel | Powered-By: None | Technologies:  React
+[*] Scanning learn.shubhamiitbhu.in
+learn.shubhamiitbhu.in | Server: Vercel | Powered-By: None | Technologies:  React
+[*] Scanning music.shubhamiitbhu.in
+music.shubhamiitbhu.in | Server: Vercel | Powered-By: None | Technologies: None detected
+[*] Scanning naharomfamily.shubhamiitbhu.in
+naharomfamily.shubhamiitbhu.in | Server: Vercel | Powered-By: None | Technologies:  React
+[*] Scanning payment.shubhamiitbhu.in
+payment.shubhamiitbhu.in | Server: Vercel | Powered-By: None | Technologies:  React
+[*] Scanning prabhu.shubhamiitbhu.in
+prabhu.shubhamiitbhu.in | Server: Vercel | Powered-By: None | Technologies: None detected
+[*] Scanning quiz.shubhamiitbhu.in
+quiz.shubhamiitbhu.in | Server: Vercel | Powered-By: None | Technologies:  React
+[*] Scanning quizbackend.shubhamiitbhu.in
+quizbackend.shubhamiitbhu.in | Server: Vercel | Powered-By: Express | Technologies: None detected
+[*] Scanning sfcalculator.shubhamiitbhu.in
+sfcalculator.shubhamiitbhu.in | Server: Vercel | Powered-By: None | Technologies: None detected
+[*] Scanning sob.shubhamiitbhu.in
+sob.shubhamiitbhu.in | Server: Vercel | Powered-By: None | Technologies: None detected
+[*] Scanning www.ecommerce.shubhamiitbhu.in
+www.ecommerce.shubhamiitbhu.in | Server: Vercel | Powered-By: None | Technologies:  React
+[*] Scanning www.learn.shubhamiitbhu.in
+www.learn.shubhamiitbhu.in | Server: Vercel | Powered-By: None | Technologies:  React
+[*] Scanning www.shubhamiitbhu.in
+www.shubhamiitbhu.in | Server: Vercel | Powered-By: None | Technologies:  React
