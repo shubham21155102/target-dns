@@ -1,0 +1,229 @@
+Security Header Analysis Report
+Generated: Sat Jan 24 06:26:47 UTC 2026
+=====================================
+
+### app-cdn-blue.app.snowflake.com ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✓] X-Content-Type-Options: Present
+[✓] CSP: Present
+[✓] X-XSS-Protection: Present
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### app-cdn-green.app.snowflake.com ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✓] X-Content-Type-Options: Present
+[✓] CSP: Present
+[✓] X-XSS-Protection: Present
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### app-cdn-staging.app.snowflake.com ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✓] X-Content-Type-Options: Present
+[✓] CSP: Present
+[✓] X-XSS-Protection: Present
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### app-cdn-test.app.snowflake.com ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✓] X-Content-Type-Options: Present
+[✓] CSP: Present
+[✓] X-XSS-Protection: Present
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### apps-api.c1.ap-southeast-1.aws.app.snowflake.com ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✓] X-Content-Type-Options: Present
+[✓] CSP: Present
+[✓] X-XSS-Protection: Present
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### apps-api.c1.canadacentral.azure.app.snowflake.com ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✓] X-Content-Type-Options: Present
+[✓] CSP: Present
+[✓] X-XSS-Protection: Present
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### apps-api.c1.centralus.azure.app.snowflake.com ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✓] X-Content-Type-Options: Present
+[✓] CSP: Present
+[✓] X-XSS-Protection: Present
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### apps-api.c1.eastus2.azure.app.snowflake.com ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✓] X-Content-Type-Options: Present
+[✓] CSP: Present
+[✓] X-XSS-Protection: Present
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### apps-api.c1.eu-west-1.aws.app.snowflake.com ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✓] X-Content-Type-Options: Present
+[✓] CSP: Present
+[✓] X-XSS-Protection: Present
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### apps-api.c1.eu-west-2.aws.app.snowflake.com ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✓] X-Content-Type-Options: Present
+[✓] CSP: Present
+[✓] X-XSS-Protection: Present
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### apps-api.c1.northeurope.azure.app.snowflake.com ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✓] X-Content-Type-Options: Present
+[✓] CSP: Present
+[✓] X-XSS-Protection: Present
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### apps-api.c1.uksouth.azure.app.snowflake.com ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✓] X-Content-Type-Options: Present
+[✓] CSP: Present
+[✓] X-XSS-Protection: Present
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### apps-api.c1.us-central1.gcp.app.snowflake.com ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✓] X-Content-Type-Options: Present
+[✓] CSP: Present
+[✓] X-XSS-Protection: Present
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### apps-api.c1.us-east-1.aws.app.snowflake.com ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✓] X-Content-Type-Options: Present
+[✓] CSP: Present
+[✓] X-XSS-Protection: Present
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### apps-api.c1.us-east-2.aws.app.snowflake.com ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✓] X-Content-Type-Options: Present
+[✓] CSP: Present
+[✓] X-XSS-Protection: Present
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### apps-api.c1.us-west-2.aws.app.snowflake.com ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✓] X-Content-Type-Options: Present
+[✓] CSP: Present
+[✓] X-XSS-Protection: Present
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### apps-api.c1.westeurope.azure.app.snowflake.com ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✓] X-Content-Type-Options: Present
+[✓] CSP: Present
+[✓] X-XSS-Protection: Present
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### apps-api.c1.westus2.azure.app.snowflake.com ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✓] X-Content-Type-Options: Present
+[✓] CSP: Present
+[✓] X-XSS-Protection: Present
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### cleanroom.c1.us-east-1.aws.app.snowflake.com ###
+[✗] HSTS: Missing
+[✗] X-Frame-Options: Missing
+[✗] X-Content-Type-Options: Missing
+[✗] CSP: Missing
+[✗] X-XSS-Protection: Missing
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### client-telemetry.c1.us-west-2.aws.app.snowflake.com ###
+[✗] HSTS: Missing
+[✗] X-Frame-Options: Missing
+[✗] X-Content-Type-Options: Missing
+[✗] CSP: Missing
+[✗] X-XSS-Protection: Missing
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### kalitest.sandbox1.us-west-2.aws-dev.app.snowflake.com ###
+[✗] HSTS: Missing
+[✗] X-Frame-Options: Missing
+[✗] X-Content-Type-Options: Missing
+[✗] CSP: Missing
+[✗] X-XSS-Protection: Missing
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### preprod.app.snowflake.com ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✓] X-Content-Type-Options: Present
+[✓] CSP: Present
+[✓] X-XSS-Protection: Present
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### proxy.app.snowflake.com ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✓] X-Content-Type-Options: Present
+[✓] CSP: Present
+[✓] X-XSS-Protection: Present
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### r2-static.preprod.app.snowflake.com ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✓] X-Content-Type-Options: Present
+[✓] CSP: Present
+[✓] X-XSS-Protection: Present
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+
+### staging.app.snowflake.com ###
+[✓] HSTS: Present
+[✗] X-Frame-Options: Missing
+[✓] X-Content-Type-Options: Present
+[✓] CSP: Present
+[✓] X-XSS-Protection: Present
+[✗] Referrer-Policy: Missing
+[✗] Permissions-Policy: Missing
+

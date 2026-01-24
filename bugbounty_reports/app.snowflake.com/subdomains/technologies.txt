@@ -1,0 +1,50 @@
+[*] Scanning app-cdn-blue.app.snowflake.com
+app-cdn-blue.app.snowflake.com | Server: cloudflare | Powered-By: None | Technologies:  React
+[*] Scanning app-cdn-green.app.snowflake.com
+app-cdn-green.app.snowflake.com | Server: cloudflare | Powered-By: None | Technologies:  React
+[*] Scanning app-cdn-staging.app.snowflake.com
+app-cdn-staging.app.snowflake.com | Server: cloudflare | Powered-By: None | Technologies:  React
+[*] Scanning app-cdn-test.app.snowflake.com
+app-cdn-test.app.snowflake.com | Server: cloudflare | Powered-By: None | Technologies:  React
+[*] Scanning apps-api.c1.ap-southeast-1.aws.app.snowflake.com
+apps-api.c1.ap-southeast-1.aws.app.snowflake.com | Server: _ | Powered-By: None | Technologies:  React
+[*] Scanning apps-api.c1.canadacentral.azure.app.snowflake.com
+apps-api.c1.canadacentral.azure.app.snowflake.com | Server: _ | Powered-By: None | Technologies:  React
+[*] Scanning apps-api.c1.centralus.azure.app.snowflake.com
+apps-api.c1.centralus.azure.app.snowflake.com | Server: _ | Powered-By: None | Technologies:  React
+[*] Scanning apps-api.c1.eastus2.azure.app.snowflake.com
+apps-api.c1.eastus2.azure.app.snowflake.com | Server: _ | Powered-By: None | Technologies:  React
+[*] Scanning apps-api.c1.eu-west-1.aws.app.snowflake.com
+apps-api.c1.eu-west-1.aws.app.snowflake.com | Server: _ | Powered-By: None | Technologies:  React
+[*] Scanning apps-api.c1.eu-west-2.aws.app.snowflake.com
+apps-api.c1.eu-west-2.aws.app.snowflake.com | Server: _ | Powered-By: None | Technologies:  React
+[*] Scanning apps-api.c1.northeurope.azure.app.snowflake.com
+apps-api.c1.northeurope.azure.app.snowflake.com | Server: _ | Powered-By: None | Technologies:  React
+[*] Scanning apps-api.c1.uksouth.azure.app.snowflake.com
+apps-api.c1.uksouth.azure.app.snowflake.com | Server: _ | Powered-By: None | Technologies:  React
+[*] Scanning apps-api.c1.us-central1.gcp.app.snowflake.com
+apps-api.c1.us-central1.gcp.app.snowflake.com | Server: _ | Powered-By: None | Technologies:  React
+[*] Scanning apps-api.c1.us-east-1.aws.app.snowflake.com
+apps-api.c1.us-east-1.aws.app.snowflake.com | Server: _ | Powered-By: None | Technologies:  React
+[*] Scanning apps-api.c1.us-east-2.aws.app.snowflake.com
+apps-api.c1.us-east-2.aws.app.snowflake.com | Server: _ | Powered-By: None | Technologies:  React
+[*] Scanning apps-api.c1.us-west-2.aws.app.snowflake.com
+apps-api.c1.us-west-2.aws.app.snowflake.com | Server: _ | Powered-By: None | Technologies:  React
+[*] Scanning apps-api.c1.westeurope.azure.app.snowflake.com
+apps-api.c1.westeurope.azure.app.snowflake.com | Server: _ | Powered-By: None | Technologies:  React
+[*] Scanning apps-api.c1.westus2.azure.app.snowflake.com
+apps-api.c1.westus2.azure.app.snowflake.com | Server: _ | Powered-By: None | Technologies:  React
+[*] Scanning cleanroom.c1.us-east-1.aws.app.snowflake.com
+cleanroom.c1.us-east-1.aws.app.snowflake.com | Server: _ | Powered-By: None | Technologies:  React
+[*] Scanning client-telemetry.c1.us-west-2.aws.app.snowflake.com
+client-telemetry.c1.us-west-2.aws.app.snowflake.com | Server: _ | Powered-By: None | Technologies: None detected
+[*] Scanning kalitest.sandbox1.us-west-2.aws-dev.app.snowflake.com
+kalitest.sandbox1.us-west-2.aws-dev.app.snowflake.com | Server: CloudFront | Powered-By: None | Technologies: None detected
+[*] Scanning preprod.app.snowflake.com
+preprod.app.snowflake.com | Server: cloudflare | Powered-By: None | Technologies:  React
+[*] Scanning proxy.app.snowflake.com
+proxy.app.snowflake.com | Server: cloudflare | Powered-By: None | Technologies:  React
+[*] Scanning r2-static.preprod.app.snowflake.com
+r2-static.preprod.app.snowflake.com | Server: cloudflare | Powered-By: None | Technologies:  React
+[*] Scanning staging.app.snowflake.com
+staging.app.snowflake.com | Server: cloudflare | Powered-By: None | Technologies:  React

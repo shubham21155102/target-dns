@@ -1,0 +1,11 @@
+# Nmap 7.94SVN scan initiated Sat Jan 24 06:26:52 2026 as: nmap -T4 --top-ports 100 -oN bugbounty_reports/app.snowflake.com/vulnerabilities/nmap_top100.txt 162.159.133.73
+Nmap scan report for 162.159.133.73
+Host is up (0.0087s latency).
+Not shown: 96 filtered tcp ports (no-response)
+PORT     STATE SERVICE
+80/tcp   open  http
+443/tcp  open  https
+8080/tcp open  http-proxy
+8443/tcp open  https-alt
+
+# Nmap done at Sat Jan 24 06:26:54 2026 -- 1 IP address (1 host up) scanned in 1.87 seconds
