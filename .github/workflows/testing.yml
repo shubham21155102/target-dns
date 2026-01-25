@@ -1,0 +1,72 @@
+name: "Check Username"
+
+on:
+  workflow_dispatch:
+    inputs:
+      username:
+        description: 'Username to check'
+        required: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq shellcheck bats tor
+      - name: Start Tor and validate SOCKS5
+        run: |
+          sudo service tor start
+          # wait up to ~15s for Tor to be ready
+          for i in $(seq 1 15); do
+            if curl --socks5 localhost:9050 -sS https://check.torproject.org >/dev/null 2>&1; then
+              echo "Tor ready"
+              break
+            fi
+            echo "Waiting for Tor..."
+            sleep 1
+          done
+          # final verification
+          curl --socks5 localhost:9050 -sS https://check.torproject.org | head -n 1
+      - name: Make script executable
+        run: chmod +x insta/check_user.sh
+      - name: Run tests
+        run: |
+          # ensure tests run as non-root
+          if [ "$(id -u)" -eq 0 ]; then
+            echo "Tests must run as non-root user in this workflow" >&2
+            exit 1
+          fi
+          # run the project tests
+          bats test/test_check_user.bats
+      - name: Run username check
+        id: check
+        run: |
+          set -o pipefail
+          out=$(sudo ./insta/check_user.sh --require-root --username "${{ github.event.inputs.username }}" --endpoint "https://wwwdev.myweb.com" ) || rc=$?
+          echo "check_output<<EOF" >> $GITHUB_OUTPUT
+          echo "$out" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+          # extract found flag
+          found=$(echo "$out" | jq -r .found)
+          echo "found=$found" >> $GITHUB_OUTPUT
+      - name: Create GitHub issue if match found
+        if: steps.check.outputs.found == 'true'
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const out = JSON.parse(process.env.CHECK_OUTPUT || '{}')
+            await github.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Username matched: ${out.username}`,
+              body: `The username **${out.username}** was found by the Check Username workflow.\n\nFull output:\n\n${JSON.stringify(out, null, 2)}`
+            })
+        env:
+          CHECK_OUTPUT: ${{ steps.check.outputs.check_output }}
