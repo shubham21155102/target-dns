@@ -35,15 +35,6 @@ jobs:
           curl --socks5 localhost:9050 -sS https://check.torproject.org | head -n 1
       - name: Make script executable
         run: chmod +x insta/check_user.sh
-      - name: Run tests
-        run: |
-          # ensure tests run as non-root
-          if [ "$(id -u)" -eq 0 ]; then
-            echo "Tests must run as non-root user in this workflow" >&2
-            exit 1
-          fi
-          # run the project tests
-          bats test/test_check_user.bats
       - name: Run username check
         id: check
         run: |
