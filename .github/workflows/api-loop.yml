@@ -1,22 +1,25 @@
 name: "API Loop Caller"
 
 on:
+  # Trigger manually
   workflow_dispatch:
     inputs:
       user_id:
         description: 'User ID for API calls'
         required: false
-        default: '7896095343'
+        default: 'YOUR_DEFAULT_ID' # Inputs must have defaults to work with cron
       loop_count:
         description: 'Number of iterations (default: 100)'
         required: false
         default: '100'
       csrf_token:
-        description: 'CSRF token for API authentication'
+        description: 'CSRF token'
         required: true
-        default: '727062cf0a52982f3dc101047dc83ad51b0c472ad64460c5c138f1e04289b077'
+        default: 'YOUR_TOKEN_HERE'
+
+  # Trigger automatically every 5 minutes
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '*/2 * * * *'
 
 jobs:
   api-loop:
