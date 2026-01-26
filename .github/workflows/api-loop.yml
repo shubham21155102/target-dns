@@ -1,0 +1,110 @@
+name: "API Loop Caller"
+
+on:
+  workflow_dispatch:
+    inputs:
+      user_id:
+        description: 'User ID for API calls'
+        required: false
+        default: 'shubham'
+      loop_count:
+        description: 'Number of iterations (default: 100)'
+        required: false
+        default: '100'
+      csrf_token:
+        description: 'CSRF token for API authentication'
+        required: true
+
+jobs:
+  api-loop:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y curl
+
+      - name: Run API loop
+        id: api-loop
+        run: |
+          # Set variables from inputs
+          USER_ID="${{ github.event.inputs.user_id }}"
+          LOOP_COUNT="${{ github.event.inputs.loop_count }}"
+          CSRF_TOKEN="${{ github.event.inputs.csrf_token }}"
+          COUNTRY_CODE="91"
+          API_URL="https://greatonlinetools.com/api/xyz"
+
+          # Initialize counters
+          SUCCESS_COUNT=0
+          FAILURE_COUNT=0
+          CURRENT_COUNT=3
+
+          echo "Starting API loop with $LOOP_COUNT iterations..."
+          echo "=============================================="
+
+          # Loop for the specified number of times
+          for i in $(seq 1 $LOOP_COUNT); do
+            echo "Iteration $i/$LOOP_COUNT"
+
+            # Make API call
+            RESPONSE=$(curl -s -w '\n%{http_code}' "$API_URL" \
+              -H 'accept: */*' \
+              -H 'accept-language: en-GB,en-US;q=0.9,en;q=0.8' \
+              -H 'cache-control: no-cache' \
+              -H 'content-type: application/json' \
+              -H 'origin: https://greatonlinetools.com' \
+              -H 'pragma: no-cache' \
+              -H 'priority: u=1, i' \
+              -H 'referer: https://greatonlinetools.com' \
+              -H 'sec-fetch-dest: empty' \
+              -H 'sec-fetch-mode: cors' \
+              -H 'sec-fetch-site: same-origin' \
+              -H 'user-agent: Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1' \
+              -H 'x-requested-with: XMLHttpRequest' \
+              --data-raw "{\"user-id\":\"$USER_ID\",\"count\":100,\"country_code\":\"$COUNTRY_CODE\",\"curr_count\":$CURRENT_COUNT,\"csrf_token\":\"$CSRF_TOKEN\",\"request_type\":\"normal\"}")
+
+            # Extract HTTP status code (last line)
+            HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
+
+            # Extract response body (everything except last line)
+            RESPONSE_BODY=$(echo "$RESPONSE" | sed '$d')
+
+            # Check if request was successful
+            if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "201" ] || [ "$HTTP_CODE" = "204" ]; then
+              SUCCESS_COUNT=$((SUCCESS_COUNT + 1))
+              echo "✓ Success (HTTP $HTTP_CODE)"
+            else
+              FAILURE_COUNT=$((FAILURE_COUNT + 1))
+              echo "✗ Failed (HTTP $HTTP_CODE)"
+              echo "Response: $RESPONSE_BODY" | head -c 200
+            fi
+
+            # Increment current count
+            CURRENT_COUNT=$((CURRENT_COUNT + 1))
+
+            # Small delay to avoid rate limiting
+            sleep 0.1
+          done
+
+          echo "=============================================="
+          echo "API Loop completed!"
+          echo "Total iterations: $LOOP_COUNT"
+          echo "Successful: $SUCCESS_COUNT"
+          echo "Failed: $FAILURE_COUNT"
+
+          # Set outputs for potential use in subsequent steps
+          echo "success_count=$SUCCESS_COUNT" >> $GITHUB_OUTPUT
+          echo "failure_count=$FAILURE_COUNT" >> $GITHUB_OUTPUT
+          echo "total_iterations=$LOOP_COUNT" >> $GITHUB_OUTPUT
+
+      - name: Summary
+        run: |
+          echo "### API Loop Summary :rocket:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Total Iterations:** ${{ steps.api-loop.outputs.total_iterations }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Successful Calls:** ${{ steps.api-loop.outputs.success_count }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Failed Calls:** ${{ steps.api-loop.outputs.failure_count }}" >> $GITHUB_STEP_SUMMARY
