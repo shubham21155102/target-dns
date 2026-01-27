@@ -7,7 +7,7 @@ on:
       user_id:
         description: 'User ID for API calls'
         required: false
-        default: 'YOUR_DEFAULT_ID' # Inputs must have defaults to work with cron
+        default: '7896095343' # Inputs must have defaults to work with cron
       loop_count:
         description: 'Number of iterations (default: 100)'
         required: false
@@ -15,11 +15,11 @@ on:
       csrf_token:
         description: 'CSRF token'
         required: true
-        default: 'YOUR_TOKEN_HERE'
+        default: '727062cf0a52982f3dc101047dc83ad51b0c472ad64460c5c138f1e04289b077'
 
   # Trigger automatically every 5 minutes
   schedule:
-    - cron: '*/2 * * * *'
+    - cron: '*/30 * * * *'
 
 jobs:
   api-loop:
