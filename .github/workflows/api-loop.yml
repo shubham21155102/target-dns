@@ -65,7 +65,7 @@ jobs:
               -H 'origin: https://greatonlinetools.com' \
               -H 'pragma: no-cache' \
               -H 'priority: u=1, i' \
-              -H 'referer: https://greatonlinetools.com' \
+              -H 'referer: https://greatonlinetools.com/smsbomber/' \
               -H 'sec-fetch-dest: empty' \
               -H 'sec-fetch-mode: cors' \
               -H 'sec-fetch-site: same-origin' \
