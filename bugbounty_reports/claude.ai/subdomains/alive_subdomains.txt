@@ -1,0 +1,10 @@
+a-cdn.claude.ai
+a.preview.claude.ai
+assets.claude.ai
+downloads.claude.ai
+downloads.preview.claude.ai
+pivot.claude.ai
+preview.claude.ai
+staging.claude.ai
+status.claude.ai
+www.claude.ai

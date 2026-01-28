@@ -1,0 +1,11 @@
+# Nmap 7.94SVN scan initiated Wed Jan 28 08:29:07 2026 as: nmap -T4 --top-ports 100 -oN bugbounty_reports/claude.ai/vulnerabilities/nmap_top100.txt 160.79.104.10
+Nmap scan report for 160.79.104.10
+Host is up (0.0058s latency).
+Not shown: 96 filtered tcp ports (no-response)
+PORT     STATE SERVICE
+80/tcp   open  http
+443/tcp  open  https
+8080/tcp open  http-proxy
+8443/tcp open  https-alt
+
+# Nmap done at Wed Jan 28 08:29:09 2026 -- 1 IP address (1 host up) scanned in 1.85 seconds

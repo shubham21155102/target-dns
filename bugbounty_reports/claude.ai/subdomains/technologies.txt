@@ -1,0 +1,20 @@
+[*] Scanning a-cdn.claude.ai
+a-cdn.claude.ai | Server: cloudfront | Powered-By: None | Technologies: None detected
+[*] Scanning a.preview.claude.ai
+a.preview.claude.ai | Server: cloudflare | Powered-By: None | Technologies: None detected
+[*] Scanning assets.claude.ai
+assets.claude.ai | Server: UploadServer | Powered-By: None | Technologies: None detected
+[*] Scanning downloads.claude.ai
+downloads.claude.ai | Server: UploadServer | Powered-By: None | Technologies: None detected
+[*] Scanning downloads.preview.claude.ai
+downloads.preview.claude.ai | Server: UploadServer | Powered-By: None | Technologies: None detected
+[*] Scanning pivot.claude.ai
+pivot.claude.ai | Server: Google Frontend | Powered-By: Express | Technologies:  React
+[*] Scanning preview.claude.ai
+preview.claude.ai | Server: cloudflare | Powered-By: None | Technologies: None detected
+[*] Scanning staging.claude.ai
+staging.claude.ai | Server: cloudflare | Powered-By: None | Technologies: None detected
+[*] Scanning status.claude.ai
+status.claude.ai | Server: cloudflare | Powered-By: None | Technologies: None detected
+[*] Scanning www.claude.ai
+www.claude.ai | Server: cloudflare | Powered-By: None | Technologies: None detected

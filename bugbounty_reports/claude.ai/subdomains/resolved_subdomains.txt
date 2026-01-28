@@ -1,0 +1,10 @@
+a-cdn.claude.ai,18.160.41.36,HTTP:301,HTTPS:404
+a.preview.claude.ai,160.79.104.10,HTTP:301,HTTPS:000000
+assets.claude.ai,34.120.108.227,HTTP:000000,HTTPS:403
+downloads.claude.ai,35.190.46.17,HTTP:000000,HTTPS:403
+downloads.preview.claude.ai,35.190.119.221,HTTP:000000,HTTPS:403
+pivot.claude.ai,34.50.145.103,HTTP:000000,HTTPS:200
+preview.claude.ai,160.79.104.10,HTTP:301,HTTPS:403
+staging.claude.ai,160.79.104.10,HTTP:301,HTTPS:301
+status.claude.ai,160.79.104.10,HTTP:302,HTTPS:302
+www.claude.ai,160.79.104.10,HTTP:301,HTTPS:301
